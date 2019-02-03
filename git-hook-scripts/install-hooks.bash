@@ -31,7 +31,7 @@ elif [ $option -eq 2 ];  then
 	echo "Installing check-tests... "
 	ln -s ../../git-hook-scripts/check-tests.bash $FILE
 else
-	echo "Installing check-msg... "
+	echo "Installing check-msg..."
 	ln -s ../../git-hook-scripts/commit-msg.bash $FILE
 fi
 
