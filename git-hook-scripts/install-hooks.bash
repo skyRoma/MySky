@@ -23,6 +23,8 @@ if [ -f $FILE ]; then
 	done
 fi 
 
+echo $option
+
 if [ $option -eq 1 ];  then
 	echo "Installing check-all..."
 	# this command creates symlink to our commit-msg script
