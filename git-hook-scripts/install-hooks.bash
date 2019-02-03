@@ -23,7 +23,7 @@ if [ -f $FILE ]; then
 	done
 fi 
 
-echo $option
+echo $option $FILE
 
 if [ $option -eq 1 ];  then
 	echo "Installing check-all..."
