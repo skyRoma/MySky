@@ -36,7 +36,7 @@ while true; do
 		echo "Installing check-tests..."
 		ln -s ../../git-hook-scripts/check-tests.bash $FILE
 	else
-		echo "Installing check-msg... "
+		echo "Installing check-msg..."
 		ln -s ../../git-hook-scripts/check-msg.bash $FILE
 	fi
 
