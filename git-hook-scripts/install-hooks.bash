@@ -13,13 +13,13 @@ read option
 if [ $option -eq 1 ];  then
 	# this command creates symlink to our pre-commit script
 	echo "Installing check-all..."
-	ln -s ../../git-hooks-scripts/check-all.bash $GIT_DIR/hooks/commit-msg
+	ln -s ../../git-hook-scripts/check-all.bash $GIT_DIR/hooks/commit-msg
 elif [ $option -eq 2 ];  then
 	echo "Installing check-tests..."
-	ln -s ../../git-hooks-scripts/check-tests.bash $GIT_DIR/hooks/commit-msg
+	ln -s ../../git-hook-scripts/check-tests.bash $GIT_DIR/hooks/commit-msg
 else
 	echo "Installing check-msg..."
-	ln -s ../../git-hooks-scripts/commit-msg.bash $GIT_DIR/hooks/commit-msg
+	ln -s ../../git-hook-scripts/commit-msg.bash $GIT_DIR/hooks/commit-msg
 fi
 
 echo "Done!"
