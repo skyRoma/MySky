@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
-./check-msg.bash "$1"
-./check-tests.bash
-exit 1
+
+./git-hook-scripts/check-tests.bash
+if [ $? -ne 0 ]; then
+	exit 1
+fi
+
+./git-hook-scripts/check-msg.bash "$1"
+if [ $? -ne 0 ]; then
+	exit 1
+fi
