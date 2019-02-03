@@ -4,8 +4,8 @@ GIT_DIR=$(git rev-parse --git-dir)
 
 echo "Please, choose option to install:"
 echo "1 - all"
-echo "2 - check commit message"
-echo "3 - check tests"
+echo "2 - check tests"
+echo "3 - check commit message"
 
 
 read option
