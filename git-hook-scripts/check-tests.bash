@@ -13,5 +13,5 @@ echo "Running tests"
 
 ./run-tests.bash
 if [ $? -ne 0 ]; then
-echo "Failed! Tests must be passed before commit" && exit 1
+echo "Failed! Tests must be passed before commit " && exit 1
 fi
