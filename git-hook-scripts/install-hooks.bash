@@ -33,7 +33,7 @@ while true; do
 		# this command creates symlink to our commit-msg script
 		ln -s ../../git-hook-scripts/check-all.bash $FILE
 	elif [ $option -eq 2 ];  then
-		echo "Installing check-tests..."
+		echo "Installing check-tests... "
 		ln -s ../../git-hook-scripts/check-tests.bash $FILE
 	else
 		echo "Installing check-msg..."
