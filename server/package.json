@@ -1,0 +1,9 @@
+{
+  "name": "my-sky-server",
+  "version": "1.0.0",
+  "author": "Roman Sluka",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^6.2.0"
+  }
+}
