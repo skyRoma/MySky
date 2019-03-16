@@ -9,6 +9,7 @@ module.exports = {
           firstName: 'John',
           lastName: 'Doe',
           email: 'demo@demo.com',
+          password: 'mockValue',
         },
       ],
       {}
