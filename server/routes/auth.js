@@ -2,9 +2,7 @@ const env = process.env.NODE_ENV || 'development';
 const config = require('../config/config')[env];
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const passport = require('passport');
 const router = express.Router();
-require('../config/passport')(passport);
 const User = require('../models').User;
 
 router.post('/signup', function(req, res) {

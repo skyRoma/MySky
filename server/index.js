@@ -6,6 +6,7 @@ const logger = require('morgan');
 const authRouter = require('./routes/auth');
 const poductRouter = require('./routes/product');
 const passport = require('passport');
+require('./config/passport')(passport);
 
 db.User.create({
   firstName: 'John',
