@@ -1,6 +1,5 @@
 'use strict';
 
-const uuidv4 = require('uuid/v4');
 var bcrypt = require('bcrypt-nodejs');
 
 module.exports = (sequelize, DataTypes) => {
@@ -9,9 +8,9 @@ module.exports = (sequelize, DataTypes) => {
     {
       id: {
         allowNull: false,
-        primaryKey: true,
         type: DataTypes.UUID,
-        defaultValue: uuidv4(),
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
       },
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
@@ -20,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  User.beforeSave((user, options) => {
+  User.beforeSave(user => {
     if (user.changed('password')) {
       user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
     }
