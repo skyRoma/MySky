@@ -22,11 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   User.beforeSave((user, options) => {
     if (user.changed('password')) {
-      user.password = bcrypt.hashSync(
-        user.password,
-        bcrypt.genSaltSync(10)
-        // null
-      );
+      user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
     }
   });
   User.prototype.comparePassword = function(passw, cb) {
