@@ -6,16 +6,22 @@ const router = express.Router();
 const User = require('../models').User;
 
 router.post('/signup', function(req, res) {
-  if (!req.body.username || !req.body.password) {
-    res.status(400).send({ msg: 'Please pass username and password.' });
+  if (!req.body.email || !req.body.password) {
+    res.status(400).send({ msg: 'Please pass email and password.' });
   } else {
     User.create({
-      email: req.body.username,
+      email: req.body.email,
       password: req.body.password,
     })
       .then(user => res.status(201).send(user))
       .catch(error => {
-        res.status(400).send(error);
+        if ((error.parent.code = 23505)) {
+          res
+            .status(409)
+            .send({ success: false, msg: 'This email is already taken.' });
+        } else {
+          res.status(400).send(error);
+        }
       });
   }
 });
@@ -23,26 +29,26 @@ router.post('/signup', function(req, res) {
 router.post('/signin', function(req, res) {
   User.find({
     where: {
-      email: req.body.username,
+      email: req.body.email,
     },
   })
     .then(user => {
       if (!user) {
         return res.status(401).send({
-          message: 'Authentication failed. User not found.',
+          message: 'Incorrect email or password.',
         });
       }
       user.comparePassword(req.body.password, (err, isMatch) => {
         if (isMatch && !err) {
-          var token = jwt.sign(
-            JSON.parse(JSON.stringify(user)),
-            config.secret
-          );
+          const payload = {
+            sub: user.id,
+          };
+          var token = jwt.sign(payload, config.secret);
           res.json({ success: true, token: token });
         } else {
           res.status(401).send({
             success: false,
-            msg: 'Authentication failed. Wrong password.',
+            msg: 'Incorrect email or password.',
           });
         }
       });

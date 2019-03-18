@@ -13,7 +13,7 @@ module.exports = function(passport) {
   passport.use(
     'jwt',
     new JwtStrategy(opts, function(jwt_payload, done) {
-      User.findByPk(jwt_payload.id)
+      User.findByPk(jwt_payload.sub)
         .then(user => {
           return done(null, user);
         })
