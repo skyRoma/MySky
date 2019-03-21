@@ -1,12 +1,7 @@
-import { Routes, CanActivate } from '@angular/router';
-import { ProfileComponent } from './profile/profile.component';
-import { AuthGuardService as AuthGuard } from './core/auth/auth-guard.service';
-export const ROUTES: Routes = [
-  { path: '', component: HomeComponent },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuard],
-  },
-  { path: '**', redirectTo: '' },
+import { Routes } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+export const APP_ROUTES: Routes = [
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent },
 ];
