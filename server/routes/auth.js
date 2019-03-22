@@ -43,7 +43,11 @@ router.post('/signin', function(req, res) {
           const payload = {
             sub: user.id,
           };
-          var token = jwt.sign(payload, config.secret);
+          const options = {
+            expiresIn: 30,
+          };
+
+          var token = jwt.sign(payload, config.secret, options);
           res.json({ success: true, token: token });
         } else {
           res.status(401).send({

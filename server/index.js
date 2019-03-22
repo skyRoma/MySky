@@ -11,7 +11,7 @@ require('./config/passport')(passport);
 db.User.create({
   firstName: 'John',
   lastName: 'Doe',
-  email: 'demo@demo.com',
+  email: 'demo@demo1.com',
   password: 'mockValue',
 })
   .then(user =>
