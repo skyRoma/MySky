@@ -5,11 +5,13 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
   constructor(public jwtHelper: JwtHelperService) {}
 
-  public getToken(): string {
+  redirectUrl: string;
+
+  getToken(): string {
     return localStorage.getItem('token');
   }
 
-  public isAuthenticated(): boolean {
+  isAuthenticated(): boolean {
     const token = this.getToken();
     return !this.jwtHelper.isTokenExpired(token);
   }
