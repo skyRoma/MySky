@@ -9,7 +9,7 @@ import {
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { AuthService } from './auth.service';
+import { AuthService } from '../auth/auth.service';
 
 export class JwtInterceptor implements HttpInterceptor {
   constructor(public auth: AuthService) {}

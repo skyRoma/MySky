@@ -5,7 +5,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TokenInterceptor } from './core/auth/token.interceptor';
+import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
