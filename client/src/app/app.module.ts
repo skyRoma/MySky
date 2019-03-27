@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,13 +10,17 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppMaterialModule } from './app-material/app-material.module';
 import { HomeModule } from './home/home.module';
+import { AuthModule } from './auth/auth.module';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppMaterialModule,
+    AuthModule,
     HomeModule,
     AppRoutingModule,
     JwtModule.forRoot({
@@ -27,6 +31,11 @@ import { HomeModule } from './home/home.module';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true,
     },
   ],

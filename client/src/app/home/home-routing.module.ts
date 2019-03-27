@@ -5,7 +5,11 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuardService } from '../core/guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AuthGuardService],
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,14 @@
+.about {
+  background-image: url('../../../assets/auth-background.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-flex-wrapper {
+  min-height: 100%;
+}

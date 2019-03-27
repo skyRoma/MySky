@@ -6,15 +6,14 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  host: { class: 'app-auth' },
 })
-export class HomeComponent implements OnInit {
-  title = 'MySky';
-
+export class AuthComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}

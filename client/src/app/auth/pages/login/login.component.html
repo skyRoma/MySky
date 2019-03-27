@@ -1,0 +1,33 @@
+<section class="form-wrapper">
+  <h1>
+    Истинное мужество есть не только воздушный шар подъема, но и парашют
+    падения.
+  </h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" fxLayout="column">
+    <mat-form-field appearance="outline">
+      <mat-label>Адрес электронной почты</mat-label>
+      <input
+        matInput
+        formControlName="email"
+        required
+        [type]="hide ? 'password' : 'text'"
+      />
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error *ngIf="email.invalid">{{
+        getErrorMessage(email)
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Пароль</mat-label>
+      <input formControlName="password" matInput required />
+      <mat-error *ngIf="password.invalid">{{
+        getErrorMessage(password)
+      }}</mat-error>
+      <button mat-icon-button matSuffix (keydown)="hide = !hide">
+        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+</section>

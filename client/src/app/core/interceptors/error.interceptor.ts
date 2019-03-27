@@ -6,12 +6,14 @@ import {
   HttpErrorResponse,
   HttpEvent,
 } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { AuthService } from '../auth/auth.service';
 
-export class JwtInterceptor implements HttpInterceptor {
+@Injectable()
+export class ErrorInterceptor implements HttpInterceptor {
   constructor(public auth: AuthService) {}
 
   intercept(
@@ -28,8 +30,7 @@ export class JwtInterceptor implements HttpInterceptor {
         (err: any) => {
           if (err instanceof HttpErrorResponse) {
             if (err.status === 401) {
-              // redirect to the login route
-              // or show a modal
+              // this.auth.logout();
             }
           }
         }
