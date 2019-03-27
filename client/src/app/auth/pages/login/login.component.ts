@@ -8,7 +8,7 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss', '../../auth.module.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: { class: 'app-login' },
@@ -19,7 +19,7 @@ export class LoginComponent {
     password: ['', [Validators.required, Validators.minLength(8)]],
   });
 
-  hidePasswordField = true;
+  hidePassword = true;
 
   constructor(private fb: FormBuilder) {}
 

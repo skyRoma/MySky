@@ -1,0 +1,42 @@
+.app-login,
+.app-signup {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 27px;
+}
+
+.form-wrapper {
+  max-width: 350px;
+  padding: 40px;
+
+  .mat-flat-button,
+  .mat-form-field-suffix button.mat-icon-button[type='button'] {
+    width: fit-content;
+    height: fit-content;
+  }
+
+  .mat-flat-button {
+      margin-top: 10px;
+  }
+}
+
+form + div {
+  margin-top: 10px;
+}
+
+.question {
+  color: #0f0fc2;
+
+  & + button {
+    font-weight: bold;
+    margin-left: 17px;
+    color: #0918d7;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
