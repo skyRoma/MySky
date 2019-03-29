@@ -10,7 +10,6 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppMaterialModule } from './app-material/app-material.module';
 import { HomeModule } from './home/home.module';
-import { AuthModule } from './auth/auth.module';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     HttpClientModule,
     BrowserAnimationsModule,
     AppMaterialModule,
-    AuthModule,
     HomeModule,
     AppRoutingModule,
     JwtModule.forRoot({
