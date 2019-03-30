@@ -55,7 +55,9 @@ export class SignupComponent {
       )
       .subscribe(
         () => {
-          this.router.navigate(['/auth/login']);
+          this.router.navigate(['/auth/login'], {
+            queryParams: { from: 'signup' },
+          });
         },
         error => {
           this.errorMsg = error.error.msg;

@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 import { AuthService } from 'src/app/core/auth/auth.service';
 
@@ -34,12 +35,26 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.authService.logout();
+    const queryParams = this.route.snapshot.queryParams;
+    this.returnUrl = queryParams['returnUrl'] || '/';
+
+    if (queryParams['from'] === 'signup') {
+      setTimeout(() => {
+        this.snackBar.open(
+          'Поздравляем! Вы успешно зарегестрировались!',
+          '',
+          {
+            duration: 5000,
+          }
+        );
+      });
+    }
   }
 
   onSubmit() {
