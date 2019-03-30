@@ -13,8 +13,6 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent implements OnInit {
-  title = 'MySky';
-
   constructor() {}
 
   ngOnInit() {}

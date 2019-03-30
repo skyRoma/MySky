@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   // redirectUrl: string;
   jwtHelper = new JwtHelperService();
@@ -41,6 +41,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('MySkyJwt');
+    this.router.navigate(['/auth/login']);
   }
 
   getToken(): string {
