@@ -5,7 +5,12 @@ import {
   OnInit,
   ChangeDetectorRef,
 } from '@angular/core';
-import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import {
+  FormBuilder,
+  Validators,
+  FormControl,
+  AbstractControl,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
@@ -39,7 +44,7 @@ export class LoginComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.authService.logout();
     const queryParams = this.route.snapshot.queryParams;
     this.returnUrl = queryParams['returnUrl'] || '/';
@@ -57,7 +62,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.loading = true;
     this.authService.login(this.email.value, this.password.value).subscribe(
       () => {
@@ -71,14 +76,14 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  get email(): any {
+  get email(): AbstractControl {
     return this.loginForm.get('email');
   }
-  get password(): any {
+  get password(): AbstractControl {
     return this.loginForm.get('password');
   }
 
-  getErrorMessage(formControl: FormControl) {
+  getErrorMessage(formControl: FormControl): string {
     return formControl.hasError('required')
       ? 'Вы должны ввести значение'
       : formControl.hasError('email')

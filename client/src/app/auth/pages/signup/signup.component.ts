@@ -4,7 +4,12 @@ import {
   ViewEncapsulation,
   ChangeDetectorRef,
 } from '@angular/core';
-import { Validators, FormBuilder, FormControl } from '@angular/forms';
+import {
+  Validators,
+  FormBuilder,
+  FormControl,
+  AbstractControl,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { MustMatch } from './must-match-validator';
@@ -44,7 +49,7 @@ export class SignupComponent {
     private cdr: ChangeDetectorRef
   ) {}
 
-  onSubmit() {
+  onSubmit(): void {
     this.loading = true;
     this.authService
       .signup(
@@ -67,23 +72,23 @@ export class SignupComponent {
       );
   }
 
-  get firstName(): any {
+  get firstName(): AbstractControl {
     return this.signupForm.get('firstName');
   }
-  get lastName(): any {
+  get lastName(): AbstractControl {
     return this.signupForm.get('lastName');
   }
-  get email(): any {
+  get email(): AbstractControl {
     return this.signupForm.get('email');
   }
-  get password(): any {
+  get password(): AbstractControl {
     return this.signupForm.get('password');
   }
-  get confirmPassword(): any {
+  get confirmPassword(): AbstractControl {
     return this.signupForm.get('confirmPassword');
   }
 
-  getErrorMessage(formControl: FormControl) {
+  getErrorMessage(formControl: FormControl): string {
     return formControl.hasError('required')
       ? 'Вы должны ввести значение'
       : formControl.hasError('email')

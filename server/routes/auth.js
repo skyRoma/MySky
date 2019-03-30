@@ -7,7 +7,9 @@ const User = require('../models').User;
 
 router.post('/signup', function(req, res) {
   if (!req.body.email || !req.body.password) {
-    res.status(400).send({ msg: 'Please pass email and password.' });
+    res
+      .status(400)
+      .send({ success: false, msg: 'Please pass email and password.' });
   } else {
     User.create({
       email: req.body.email,
@@ -55,7 +57,7 @@ router.post('/signin', function(req, res) {
           };
 
           var token = jwt.sign(payload, config.secret, options);
-          res.json({ success: true, token: token });
+          res.json({ success: true, msg: token });
         } else {
           res.status(401).send({
             success: false,

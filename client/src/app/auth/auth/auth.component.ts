@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
@@ -13,8 +12,4 @@ import {
   encapsulation: ViewEncapsulation.None,
   host: { class: 'app-auth' },
 })
-export class AuthComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class AuthComponent {}

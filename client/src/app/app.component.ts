@@ -15,9 +15,9 @@ import { AuthService } from './core/auth/auth.service';
 export class AppComponent {
   title = 'MySky';
 
-  constructor(private authService: AuthService) {}
+  constructor(public authService: AuthService) {}
 
-  logout() {
+  logout(): void {
     this.authService.logout();
   }
 }

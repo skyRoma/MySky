@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+
+import { MysHttpResponse } from '../interfaces/http-responses';
+import { MysToken } from '../interfaces/token';
 
 @Injectable({
   providedIn: 'root',
@@ -18,28 +22,34 @@ export class AuthService {
     password: string,
     firstName: string,
     lastName: string
-  ) {
-    return this.http.post<string>(`http://localhost:3000/auth/signup`, {
-      email,
-      password,
-      firstName,
-      lastName,
-    });
+  ): Observable<MysHttpResponse> {
+    return this.http.post<MysHttpResponse>(
+      `http://localhost:3000/auth/signup`,
+      {
+        email,
+        password,
+        firstName,
+        lastName,
+      }
+    );
   }
 
-  login(email: string, password: string) {
+  login(email: string, password: string): Observable<MysHttpResponse> {
     return this.http
-      .post<any>(`http://localhost:3000/auth/signin`, { email, password })
+      .post<MysHttpResponse>(`http://localhost:3000/auth/signin`, {
+        email,
+        password,
+      })
       .pipe(
         tap(res => {
           if (res) {
-            localStorage.setItem('MySkyJwt', res.token);
+            localStorage.setItem('MySkyJwt', res.msg);
           }
         })
       );
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('MySkyJwt');
     this.router.navigate(['/auth/login']);
   }
@@ -48,7 +58,7 @@ export class AuthService {
     return localStorage.getItem('MySkyJwt');
   }
 
-  getDecodedToken() {
+  getDecodedToken(): MysToken {
     return this.jwtHelper.decodeToken(this.getToken());
   }
 
