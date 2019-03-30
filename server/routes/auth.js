@@ -12,8 +12,14 @@ router.post('/signup', function(req, res) {
     User.create({
       email: req.body.email,
       password: req.body.password,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
     })
-      .then(user => res.status(201).send(user))
+      .then(() =>
+        res
+          .status(201)
+          .send({ success: true, msg: 'You successfully signup' })
+      )
       .catch(error => {
         if ((error.parent.code = 23505)) {
           res
@@ -35,7 +41,8 @@ router.post('/signin', function(req, res) {
     .then(user => {
       if (!user) {
         return res.status(401).send({
-          message: 'Incorrect email or password.',
+          success: false,
+          msg: 'Incorrect email or password.',
         });
       }
       user.comparePassword(req.body.password, (err, isMatch) => {

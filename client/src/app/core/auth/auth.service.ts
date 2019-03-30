@@ -1,28 +1,54 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
 
-import { User } from '../models/user';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  constructor(private http: HttpClient) {}
 
-  constructor(public jwtHelper: JwtHelperService, private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(
-      JSON.parse(this.getToken())
-    );
-    this.currentUser = this.currentUserSubject.asObservable();
+  // redirectUrl: string;
+  jwtHelper = new JwtHelperService();
+
+  signup(
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string
+  ) {
+    return this.http.post<string>(`http://localhost:3000/auth/signup`, {
+      email,
+      password,
+      firstName,
+      lastName,
+    });
   }
 
-  redirectUrl: string;
+  login(email: string, password: string) {
+    return this.http
+      .post<any>(`http://localhost:3000/auth/signin`, { email, password })
+      .pipe(
+        tap(res => {
+          if (res) {
+            localStorage.setItem('MySkyJwt', res.token);
+          }
+        })
+      );
+  }
+
+  logout() {
+    localStorage.removeItem('MySkyJwt');
+  }
 
   getToken(): string {
-    return localStorage.getItem('token');
+    return localStorage.getItem('MySkyJwt');
+  }
+
+  getDecodedToken() {
+    return this.jwtHelper.decodeToken(this.getToken());
   }
 
   isAuthenticated(): boolean {

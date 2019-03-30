@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,9 +20,6 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     AppMaterialModule,
     HomeModule,
     AppRoutingModule,
-    JwtModule.forRoot({
-      config: {}, // https://github.com/auth0/angular2-jwt#usage-injection
-    }),
   ],
   providers: [
     {

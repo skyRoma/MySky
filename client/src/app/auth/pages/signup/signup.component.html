@@ -1,12 +1,4 @@
 <section class="form-wrapper">
-  <blockquote>
-    <p>
-      Истинное мужество есть не только воздушный шар подъема, но и парашют
-      падения.
-    </p>
-    <cite>- Карл Людвиг Бёрне</cite>
-  </blockquote>
-
   <h1>Зарегистрироваться в MySky</h1>
 
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" fxLayout="column">
@@ -83,14 +75,19 @@
       </button>
     </mat-form-field>
 
-    <button
-      color="primary"
-      mat-flat-button
-      type="submit"
-      [disabled]="!signupForm.valid"
-    >
-      Зарегистрироваться
-    </button>
+    <div class="submit">
+      <button
+        color="primary"
+        mat-flat-button
+        type="submit"
+        [disabled]="!signupForm.valid"
+      >
+        Зарегистрироваться
+      </button>
+      <mat-spinner *ngIf="loading" diameter="33"></mat-spinner>
+    </div>
+
+    <p *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</p>
   </form>
   <div>
     <span class="question">Уже зарегистрированы?</span>

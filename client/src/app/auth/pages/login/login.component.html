@@ -1,6 +1,8 @@
 <section class="form-wrapper">
   <blockquote>
-    <p> Испытай один раз полёт, и твои глаза навечно будут устремлены в небо...</p>
+    <p>
+      Испытай один раз полёт, и твои глаза навечно будут устремлены в небо...
+    </p>
     <cite>- Леонардо да Винчи</cite>
   </blockquote>
 
@@ -39,14 +41,19 @@
       </button>
     </mat-form-field>
 
-    <button
-      color="primary"
-      mat-flat-button
-      type="submit"
-      [disabled]="!loginForm.valid"
-    >
-      Войти
-    </button>
+    <div class="submit">
+      <button
+        color="primary"
+        mat-flat-button
+        type="submit"
+        [disabled]="!loginForm.valid"
+      >
+        Войти
+      </button>
+      <mat-spinner *ngIf="loading" diameter="33"></mat-spinner>
+    </div>
+
+    <p *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</p>
   </form>
   <div>
     <span class="question">Ещё нет профиля?</span>

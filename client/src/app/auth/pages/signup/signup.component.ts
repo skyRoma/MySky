@@ -2,9 +2,13 @@ import {
   Component,
   ChangeDetectionStrategy,
   ViewEncapsulation,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { Validators, FormBuilder, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { MustMatch } from './must-match-validator';
+import { AuthService } from 'src/app/core/auth/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -30,11 +34,35 @@ export class SignupComponent {
 
   hidePassword = true;
   hideConfirmPassword = true;
+  loading: boolean;
+  errorMsg: string;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   onSubmit() {
-    console.log(this.signupForm.value);
+    this.loading = true;
+    this.authService
+      .signup(
+        this.email.value,
+        this.password.value,
+        this.firstName.value,
+        this.lastName.value
+      )
+      .subscribe(
+        () => {
+          this.router.navigate(['/auth/login']);
+        },
+        error => {
+          this.errorMsg = error.error.msg;
+          this.loading = false;
+          this.cdr.detectChanges();
+        }
+      );
   }
 
   get firstName(): any {

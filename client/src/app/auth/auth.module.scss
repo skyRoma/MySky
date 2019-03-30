@@ -7,21 +7,6 @@
   background-color: #84edff1c;
 }
 
-.form-wrapper {
-  max-width: 350px;
-  padding: 40px;
-
-  .mat-flat-button,
-  .mat-form-field-suffix button.mat-icon-button[type='button'] {
-    width: fit-content;
-    height: fit-content;
-  }
-
-  .mat-flat-button {
-    margin-top: 10px;
-  }
-}
-
 blockquote {
   border-left: solid 3px #333;
   padding-left: 1px;
@@ -49,6 +34,36 @@ h1 {
   font-size: 24px;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.form-wrapper {
+  max-width: 350px;
+  padding: 40px;
+
+  .mat-flat-button,
+  .mat-form-field-suffix button.mat-icon-button[type='button'] {
+    width: fit-content;
+    height: fit-content;
+  }
+}
+
+.submit {
+  display: flex;
+  align-items: center;
+      margin-top: 10px;
+
+}
+
+.mat-spinner {
+  margin-left: 35px;
+}
+
+.error-msg{
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 6px;
 }
 
 form + div {
