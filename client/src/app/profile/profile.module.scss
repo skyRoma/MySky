@@ -1,4 +1,9 @@
 .user-info {
+  & > div:first-child {
+    font-size: 27px;
+    color: #b0b0b0;
+  }
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,34 +12,13 @@
   font-weight: bold;
   align-items: initial;
 
-  & > div {
+  & > div,
+  .mat-form-field {
     margin-top: 40px;
-  }
-  & > div:first-child {
-    font-size: 27px;
-    color: #b0b0b0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .mat-icon{
-        font-size: 26px;
-    }
-
-    .mat-icon-button:hover {
-      .mat-icon {
-        color: black;
-      }
-    }
   }
 }
 
 .user-info-data {
   font-size: 23px;
   margin-top: 5px;
-}
-
-.user-info-title {
-  color: #c4c4c4;
-  font-size: 15px;
 }

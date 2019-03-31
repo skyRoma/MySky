@@ -1,7 +1,6 @@
 import {
   Component,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
   OnInit,
   ChangeDetectorRef,
 } from '@angular/core';
@@ -21,7 +20,6 @@ import { AuthService } from 'src/app/core/auth/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss', '../../auth.module.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'half-page' },
 })
 export class LoginComponent implements OnInit {

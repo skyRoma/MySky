@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService } from './core/auth/auth.service';
 
 @Component({
@@ -10,7 +6,6 @@ import { AuthService } from './core/auth/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   title = 'MySky';

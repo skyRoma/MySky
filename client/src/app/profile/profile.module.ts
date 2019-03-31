@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileViewComponent } from './pages/profile-view/profile-view.component';
@@ -13,6 +14,11 @@ import { AppMaterialModule } from '../app-material/app-material.module';
     ProfileEditComponent,
     ProfileStatisticsComponent,
   ],
-  imports: [CommonModule, ProfileRoutingModule, AppMaterialModule],
+  imports: [
+    CommonModule,
+    ProfileRoutingModule,
+    AppMaterialModule,
+    ReactiveFormsModule,
+  ],
 })
 export class ProfileModule {}

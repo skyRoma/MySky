@@ -1,7 +1,6 @@
 import {
   Component,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
   ChangeDetectorRef,
 } from '@angular/core';
 import {
@@ -20,7 +19,6 @@ import { AuthService } from 'src/app/core/auth/auth.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss', '../../auth.module.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'half-page' },
 })
 export class SignupComponent {
