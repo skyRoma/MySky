@@ -7,9 +7,10 @@ const User = require('../models').User;
 
 router.post('/signup', function(req, res) {
   if (!req.body.email || !req.body.password) {
-    res
-      .status(400)
-      .send({ success: false, msg: 'Please pass email and password.' });
+    res.status(400).send({
+      success: false,
+      msg: 'Пожалуйста введите адресс электронной почты и пароль.',
+    });
   } else {
     User.create({
       email: req.body.email,
@@ -20,13 +21,14 @@ router.post('/signup', function(req, res) {
       .then(() =>
         res
           .status(201)
-          .send({ success: true, msg: 'You successfully signup' })
+          .send({ success: true, msg: 'Вы успешно зарегистрировались.' })
       )
       .catch(error => {
         if ((error.parent.code = 23505)) {
-          res
-            .status(409)
-            .send({ success: false, msg: 'This email is already taken.' });
+          res.status(409).send({
+            success: false,
+            msg: 'Этот адресс электронной почты уже используется.',
+          });
         } else {
           res.status(400).send(error);
         }
@@ -44,7 +46,7 @@ router.post('/signin', function(req, res) {
       if (!user) {
         return res.status(401).send({
           success: false,
-          msg: 'Incorrect email or password.',
+          msg: 'Неправильный адрес электронной почты или пароль.',
         });
       }
       user.comparePassword(req.body.password, (err, isMatch) => {
@@ -61,7 +63,7 @@ router.post('/signin', function(req, res) {
         } else {
           res.status(401).send({
             success: false,
-            msg: 'Incorrect email or password.',
+            msg: 'Неправильный адрес электронной почты или пароль.',
           });
         }
       });
