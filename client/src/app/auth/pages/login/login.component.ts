@@ -22,7 +22,7 @@ import { AuthService } from 'src/app/core/auth/auth.service';
   styleUrls: ['./login.component.scss', '../../auth.module.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  host: { class: 'app-login' },
+  host: { class: 'half-page' },
 })
 export class LoginComponent implements OnInit {
   loginForm = this.fb.group({

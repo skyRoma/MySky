@@ -21,7 +21,7 @@ import { AuthService } from 'src/app/core/auth/auth.service';
   styleUrls: ['./signup.component.scss', '../../auth.module.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  host: { class: 'app-signup' },
+  host: { class: 'half-page' },
 })
 export class SignupComponent {
   signupForm = this.fb.group(

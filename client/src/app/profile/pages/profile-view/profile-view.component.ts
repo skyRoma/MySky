@@ -11,6 +11,7 @@ import {
   styleUrls: ['./profile-view.component.scss', '../../profile.module.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  host: { class: 'half-page' },
 })
 export class ProfileViewComponent implements OnInit {
   constructor() {}

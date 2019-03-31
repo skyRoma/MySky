@@ -6,14 +6,13 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-profile-edit',
-  templateUrl: './profile-edit.component.html',
-  styleUrls: ['./profile-edit.component.scss', '../../profile.module.scss'],
+  selector: 'app-profile-statistics',
+  templateUrl: './profile-statistics.component.html',
+  styleUrls: ['./profile-statistics.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  host: { class: 'half-page' },
 })
-export class ProfileEditComponent implements OnInit {
+export class ProfileStatisticsComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
