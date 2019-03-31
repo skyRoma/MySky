@@ -3,7 +3,7 @@ const config = require('./config')[env];
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 
-const User = require('../models').User;
+const userService = require('../services/user-service');
 
 module.exports = function(passport) {
   const opts = {
@@ -13,7 +13,8 @@ module.exports = function(passport) {
   passport.use(
     'jwt',
     new JwtStrategy(opts, function(jwt_payload, done) {
-      User.findByPk(jwt_payload.sub)
+      userService
+        .findById(jwt_payload.sub)
         .then(user => {
           return done(null, user);
         })

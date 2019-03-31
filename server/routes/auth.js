@@ -1,9 +1,11 @@
 const env = process.env.NODE_ENV || 'development';
-const config = require('../config/config')[env];
 const express = require('express');
 const jwt = require('jsonwebtoken');
+
+const config = require('../config/config')[env];
+const userService = require('../services/user-service');
+
 const router = express.Router();
-const User = require('../models').User;
 
 router.post('/signup', function(req, res) {
   if (!req.body.email || !req.body.password) {
@@ -12,12 +14,13 @@ router.post('/signup', function(req, res) {
       msg: 'Пожалуйста введите адресс электронной почты и пароль.',
     });
   } else {
-    User.create({
-      email: req.body.email,
-      password: req.body.password,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-    })
+    userService
+      .create({
+        email: req.body.email,
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+      })
       .then(() =>
         res
           .status(201)
@@ -37,11 +40,12 @@ router.post('/signup', function(req, res) {
 });
 
 router.post('/signin', function(req, res) {
-  User.find({
-    where: {
-      email: req.body.email,
-    },
-  })
+  userService
+    .findOne({
+      where: {
+        email: req.body.email,
+      },
+    })
     .then(user => {
       if (!user) {
         return res.status(401).send({
