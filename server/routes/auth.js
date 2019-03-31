@@ -59,7 +59,7 @@ router.post('/signin', function(req, res) {
             sub: user.id,
           };
           const options = {
-            expiresIn: 30,
+            expiresIn: 350,
           };
 
           var token = jwt.sign(payload, config.secret, options);

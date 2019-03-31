@@ -1,7 +1,40 @@
 .user-info {
-  flex: 1;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  background-color: #84edff1c;
+  padding: 40px;
+  font-family: 'Lucida Sans', sans-serif;
+  font-weight: bold;
+  align-items: initial;
+
+  & > div {
+    margin-top: 40px;
+  }
+  & > div:first-child {
+    font-size: 27px;
+    color: #b0b0b0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .mat-icon{
+        font-size: 26px;
+    }
+
+    .mat-icon-button:hover {
+      .mat-icon {
+        color: black;
+      }
+    }
+  }
+}
+
+.user-info-data {
+  font-size: 23px;
+  margin-top: 5px;
+}
+
+.user-info-title {
+  color: #c4c4c4;
+  font-size: 15px;
 }
