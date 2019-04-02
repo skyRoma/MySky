@@ -5,8 +5,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { MysHttpResponse } from '../interfaces/http-responses';
-import { MysToken } from '../interfaces/token';
+import { AuthHttpResponse, MysToken } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -22,8 +21,8 @@ export class AuthService {
     password: string,
     firstName: string,
     lastName: string
-  ): Observable<MysHttpResponse> {
-    return this.http.post<MysHttpResponse>(
+  ): Observable<AuthHttpResponse> {
+    return this.http.post<AuthHttpResponse>(
       `http://localhost:3000/auth/signup`,
       {
         email,
@@ -34,9 +33,9 @@ export class AuthService {
     );
   }
 
-  login(email: string, password: string): Observable<MysHttpResponse> {
+  login(email: string, password: string): Observable<AuthHttpResponse> {
     return this.http
-      .post<MysHttpResponse>(`http://localhost:3000/auth/signin`, {
+      .post<AuthHttpResponse>(`http://localhost:3000/auth/signin`, {
         email,
         password,
       })

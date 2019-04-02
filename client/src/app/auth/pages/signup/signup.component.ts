@@ -90,7 +90,7 @@ export class SignupComponent {
     return formControl.hasError('required')
       ? 'Вы должны ввести значение'
       : formControl.hasError('email')
-      ? 'Вы должны ввести значение'
+      ? 'Введите правильный адрес электронной почты'
       : formControl.hasError('mustMatch')
       ? 'Пароли не совпадают'
       : formControl.hasError('minlength')

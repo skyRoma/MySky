@@ -1,8 +1,10 @@
 export class User {
-  id: string;
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  token?: string;
+  constructor(
+    readonly id: string,
+    readonly email: string,
+    readonly password: string,
+    readonly firstName: string,
+    readonly lastName: string,
+    readonly token: string
+  ) {}
 }
