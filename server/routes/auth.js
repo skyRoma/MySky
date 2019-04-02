@@ -4,12 +4,13 @@ const jwt = require('jsonwebtoken');
 
 const config = require('../config/config')[env];
 const userService = require('../services/user-service');
+const httpCodes = require('../config/httpCodes');
 
 const router = express.Router();
 
 router.post('/signup', function(req, res) {
   if (!req.body.email || !req.body.password) {
-    res.status(400).send({
+    res.status(httpCodes.BAD_REQUEST).send({
       success: false,
       msg: 'Пожалуйста введите адресс электронной почты и пароль.',
     });
@@ -23,17 +24,17 @@ router.post('/signup', function(req, res) {
       })
       .then(() =>
         res
-          .status(201)
+          .status(httpCodes.CREATED)
           .send({ success: true, msg: 'Вы успешно зарегистрировались.' })
       )
       .catch(error => {
         if ((error.parent.code = 23505)) {
-          res.status(409).send({
+          res.status(httpCodes.CONFLICT).send({
             success: false,
             msg: 'Этот адресс электронной почты уже используется.',
           });
         } else {
-          res.status(400).send(error);
+          res.status(httpCodes.BAD_REQUEST).send(error);
         }
       });
   }
@@ -48,7 +49,7 @@ router.post('/signin', function(req, res) {
     })
     .then(user => {
       if (!user) {
-        return res.status(401).send({
+        return res.status(httpCodes.UNAUTHORIZED).send({
           success: false,
           msg: 'Неправильный адрес электронной почты или пароль.',
         });
@@ -65,14 +66,14 @@ router.post('/signin', function(req, res) {
           var token = jwt.sign(payload, config.secret, options);
           res.json({ success: true, msg: token });
         } else {
-          res.status(401).send({
+          res.status(httpCodes.UNAUTHORIZED).send({
             success: false,
             msg: 'Неправильный адрес электронной почты или пароль.',
           });
         }
       });
     })
-    .catch(error => res.status(400).send(error));
+    .catch(error => res.status(httpCodes.BAD_REQUEST).send(error));
 });
 
 module.exports = router;

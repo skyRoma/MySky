@@ -8,7 +8,7 @@ const cors = require('cors');
 const authRouter = require('./routes/auth');
 const poductRouter = require('./routes/product');
 const passport = require('passport');
-require('./config/passport')(passport);
+require('./middlewares/passport')(passport);
 
 const corsOptions = {
   origin: 'http://localhost:4200',
