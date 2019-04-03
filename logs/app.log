@@ -49,3 +49,13 @@
 {"message":"Connection has been established successfully.","level":"error"}
 {"message":"Server is up on port 3000","level":"info"}
 {"message":"Connection has been established successfully.","level":"info"}
+{"message":"Server is up on port 3000","level":"info"}
+{"message":"Connection has been established successfully.","level":"info"}
+{"message":"Server is up on port 3000","level":"info"}
+{"message":"Connection has been established successfully.","level":"info"}
+{"message":"Server is up on port 3000","level":"info"}
+{"message":"Connection has been established successfully.","level":"info"}
+{"message":"Server is up on port 3000","level":"info"}
+{"message":"Connection has been established successfully.","level":"info"}
+{"message":"::1 - - [03/Apr/2019:16:37:18 +0000] \"POST /auth/signup HTTP/1.1\" 201 82 \"http://localhost:4200/auth/signup\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [03/Apr/2019:16:37:22 +0000] \"POST /auth/signin HTTP/1.1\" 200 213 \"http://localhost:4200/auth/login\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36\"\n","level":"info"}
