@@ -9,7 +9,11 @@ const userRouter = require('./user');
 const router = express.Router();
 
 router.use('/auth', authRouter);
-router.use('/users', userRouter);
+router.use(
+  '/users',
+  passport.authenticate('jwt', { session: false }),
+  userRouter
+);
 router.use(
   '/products',
   passport.authenticate('jwt', { session: false }),
