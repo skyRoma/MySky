@@ -1,8 +1,8 @@
 const env = process.env.NODE_ENV || 'development';
-const config = require('../config/config')[env];
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 
+const config = require('../config/config')[env];
 const userService = require('../services/user-service');
 
 module.exports = function(passport) {

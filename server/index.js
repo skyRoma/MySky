@@ -4,11 +4,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-
-const authRouter = require('./routes/auth');
-const poductRouter = require('./routes/product');
-const winston = require('./config/winston');
 const passport = require('passport');
+
+const winston = require('./config/winston');
+const responseHandler = require('./middlewares/responseHandler');
+const routes = require('./routes');
+
 require('./middlewares/passport')(passport);
 
 const corsOptions = {
@@ -47,13 +48,9 @@ app.use(cors(corsOptions));
 app.use(morgan('combined', { stream: winston.stream }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(routes);
 
-app.use('/auth', authRouter);
-app.use(
-  '/products',
-  passport.authenticate('jwt', { session: false }),
-  poductRouter
-);
+app.use(responseHandler.handleError);
 
 app.listen(3000, () => {
   winston.info('Server is up on port 3000');
