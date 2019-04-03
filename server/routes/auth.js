@@ -28,7 +28,7 @@ router.post('/signup', function(req, res) {
           .send({ success: true, msg: 'Вы успешно зарегистрировались.' })
       )
       .catch(error => {
-        if ((error.parent.code = 23505)) {
+        if (error.parent.code === '23505') {
           res.status(httpCodes.CONFLICT).send({
             success: false,
             msg: 'Этот адресс электронной почты уже используется.',
@@ -63,7 +63,7 @@ router.post('/signin', function(req, res) {
             expiresIn: 350,
           };
 
-          var token = jwt.sign(payload, config.secret, options);
+          const token = jwt.sign(payload, config.secret, options);
           res.json({ success: true, msg: token });
         } else {
           res.status(httpCodes.UNAUTHORIZED).send({

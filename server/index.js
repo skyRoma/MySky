@@ -1,12 +1,13 @@
 require('dotenv').config();
-const db = require('./models');
+// const db = require('./models');
 const express = require('express');
 const bodyParser = require('body-parser');
-const logger = require('morgan');
+const morgan = require('morgan');
 const cors = require('cors');
 
 const authRouter = require('./routes/auth');
 const poductRouter = require('./routes/product');
+const winston = require('./config/winston');
 const passport = require('passport');
 require('./middlewares/passport')(passport);
 
@@ -43,7 +44,7 @@ const corsOptions = {
 const app = express();
 
 app.use(cors(corsOptions));
-app.use(logger('dev'));
+app.use(morgan('combined', { stream: winston.stream }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -55,5 +56,5 @@ app.use(
 );
 
 app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+  winston.info('Server is up on port 3000');
 });

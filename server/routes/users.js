@@ -1,10 +1,5 @@
-// const env = process.env.NODE_ENV || 'development';
 // const express = require('express');
-// const jwt = require('jsonwebtoken');
-
-// const config = require('../config/config')[env];
 // const userService = require('../services/user-service');
-
 // const router = express.Router();
 
 // router

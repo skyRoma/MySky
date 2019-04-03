@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
+const winston = require('../config/winston');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.js')[env];
@@ -21,10 +22,10 @@ if (config.use_env_variable) {
   sequelize
     .authenticate()
     .then(() => {
-      console.log('Connection has been established successfully.');
+      winston.info('Connection has been established successfully.');
     })
     .catch(err => {
-      console.error('Unable to connect to the database:', err);
+      winston.error('Unable to connect to the database:', err);
     });
 }
 
