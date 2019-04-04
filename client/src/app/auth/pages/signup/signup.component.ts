@@ -12,7 +12,7 @@ import {
 import { Router } from '@angular/router';
 
 import { MustMatch } from './must-match-validator';
-import { AuthService } from 'src/app/core/auth/auth.service';
+import { AuthService } from '../../../core/services';
 
 @Component({
   selector: 'app-signup',

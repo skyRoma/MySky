@@ -13,7 +13,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
-import { AuthService } from 'src/app/core/auth/auth.service';
+import { AuthService } from '../../../core/services';
 
 @Component({
   selector: 'app-login',
