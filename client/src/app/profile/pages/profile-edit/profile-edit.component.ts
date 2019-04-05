@@ -4,6 +4,7 @@ import {
   FormBuilder,
   AbstractControl,
   FormControl,
+  FormGroup,
 } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/core/models';
@@ -17,12 +18,7 @@ import { UserService } from 'src/app/core/services';
   host: { class: 'half-page' },
 })
 export class ProfileEditComponent implements OnInit {
-  profileEdit = this.fb.group({
-    firstName: ['Иван', [Validators.required]],
-    lastName: ['Иванов', [Validators.required]],
-    email: ['romaddfd@mail.ru', [Validators.required, Validators.email]],
-  });
-
+  profileEdit: FormGroup;
   hidePassword = true;
   hideConfirmPassword = true;
   loading: boolean;
