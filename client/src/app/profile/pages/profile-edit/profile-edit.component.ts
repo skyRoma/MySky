@@ -1,15 +1,13 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import {
   Validators,
   FormBuilder,
   AbstractControl,
   FormControl,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/core/models';
+import { UserService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-profile-edit',
@@ -18,7 +16,7 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'half-page' },
 })
-export class ProfileEditComponent {
+export class ProfileEditComponent implements OnInit {
   profileEdit = this.fb.group({
     firstName: ['Иван', [Validators.required]],
     lastName: ['Иванов', [Validators.required]],
@@ -32,12 +30,32 @@ export class ProfileEditComponent {
 
   constructor(
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     private router: Router,
-    private cdr: ChangeDetectorRef
+    private userService: UserService
   ) {}
 
+  ngOnInit() {
+    this.route.parent.data.subscribe((data: { profile: User }) => {
+      const { profile } = data;
+      this.profileEdit = this.fb.group({
+        firstName: [profile.firstName, [Validators.required]],
+        lastName: [profile.lastName, [Validators.required]],
+        email: [profile.email, [Validators.required, Validators.email]],
+      });
+    });
+  }
+
   onSubmit(): void {
-    this.loading = true;
+    const id = this.route.parent.snapshot.paramMap.get('id');
+    this.userService.updateUser(id, this.profileEdit.value).subscribe(
+      () => {
+        this.router.navigate([`profile/${id}`]);
+      },
+      () => {
+        this.loading = false;
+      }
+    );
   }
 
   get firstName(): AbstractControl {

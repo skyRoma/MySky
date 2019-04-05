@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { AuthHttpResponse, MysToken } from '../models';
@@ -11,10 +11,20 @@ import { AuthHttpResponse, MysToken } from '../models';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient, private router: Router) {}
+  private currentUserIdSubject: BehaviorSubject<string>;
+  public currentUserId: Observable<string>;
 
   // redirectUrl: string;
   jwtHelper = new JwtHelperService();
+
+  constructor(private http: HttpClient, private router: Router) {
+    const token = this.getDecodedToken();
+
+    this.currentUserIdSubject = new BehaviorSubject<string>(
+      token ? token.sub : null
+    );
+    this.currentUserId = this.currentUserIdSubject.asObservable();
+  }
 
   signup(
     email: string,
@@ -43,6 +53,7 @@ export class AuthService {
         tap(res => {
           if (res) {
             localStorage.setItem('MySkyJwt', res.msg);
+            this.currentUserIdSubject.next(this.getDecodedToken().sub);
           }
         })
       );
@@ -50,6 +61,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('MySkyJwt');
+    this.currentUserIdSubject.next(null);
     this.router.navigate(['/auth/login']);
   }
 
@@ -61,8 +73,8 @@ export class AuthService {
     return this.jwtHelper.decodeToken(this.getToken());
   }
 
-  isAuthenticated(): boolean {
+  isAuthTokenExpired(): boolean {
     const token = this.getToken();
-    return !this.jwtHelper.isTokenExpired(token);
+    return this.jwtHelper.isTokenExpired(token);
   }
 }

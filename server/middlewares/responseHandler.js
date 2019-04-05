@@ -47,15 +47,11 @@ function handleSuccess(actionFn) {
           throw new NotFound();
         }
 
-        const resultObj = {
-          result: actionResult,
-        };
-
         if (req.method === 'DELETE' || req.method === 'PUT') {
           successStatusCode = httpCodes.NO_CONTENT;
-          resultObj.result = {};
+          actionResult = {};
         }
-        return res.status(successStatusCode).send(resultObj);
+        return res.status(successStatusCode).send(actionResult);
       })
       .catch(next);
 }

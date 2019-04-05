@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+
 import { AuthService } from './core/services';
 
 @Component({
@@ -9,8 +10,13 @@ import { AuthService } from './core/services';
 })
 export class AppComponent {
   title = 'MySky';
+  currentUserId: string;
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService) {
+    this.authService.currentUserId.subscribe(id => {
+      this.currentUserId = id;
+    });
+  }
 
   logout(): void {
     this.authService.logout();

@@ -1,4 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { User } from 'src/app/core/models';
 
 @Component({
   selector: 'app-profile-view',
@@ -8,7 +11,13 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   host: { class: 'half-page' },
 })
 export class ProfileViewComponent implements OnInit {
-  constructor() {}
+  profile: User;
 
-  ngOnInit() {}
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.route.parent.data.subscribe((data: { profile: User }) => {
+      this.profile = data.profile;
+    });
+  }
 }

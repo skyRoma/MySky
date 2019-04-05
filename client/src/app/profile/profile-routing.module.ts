@@ -4,14 +4,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 import { ProfileViewComponent } from './pages/profile-view/profile-view.component';
 import { ProfileStatisticsComponent } from './profile-statistics/profile-statistics.component';
+import { ProfileResolverService } from './profile-resolver.service';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: ProfileStatisticsComponent,
+    resolve: {
+      profile: ProfileResolverService,
+    },
+    runGuardsAndResolvers: 'always',
     children: [
-      { path: '', redirectTo: 'view', pathMatch: 'full' },
-      { path: 'view', component: ProfileViewComponent },
+      {
+        path: '',
+        component: ProfileViewComponent,
+      },
       { path: 'edit', component: ProfileEditComponent },
     ],
   },

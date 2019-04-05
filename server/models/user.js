@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       lastName: DataTypes.STRING,
       email: { type: DataTypes.STRING, unique: true },
       password: DataTypes.STRING,
-      role: { type: DataTypes.STRING, defaultValue: 'user' },
+      role: { type: DataTypes.STRING, defaultValue: 'пользователь' },
     },
     {}
   );
