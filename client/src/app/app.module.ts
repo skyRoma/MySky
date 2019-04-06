@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { TokenInterceptor, ErrorInterceptor } from './core/interceptors';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppMaterialModule } from './app-material/app-material.module';
-import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent],
@@ -17,7 +16,6 @@ import { HomeModule } from './home/home.module';
     HttpClientModule,
     BrowserAnimationsModule,
     AppMaterialModule,
-    HomeModule,
     AppRoutingModule,
   ],
   providers: [

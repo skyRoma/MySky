@@ -3,12 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from '../core/guards/auth.guard';
+import { HomeResolverService } from './home-resolver.service';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: HomeComponent,
     canActivate: [AuthGuard],
+    resolve: {
+      wheather: HomeResolverService,
+    },
   },
 ];
 

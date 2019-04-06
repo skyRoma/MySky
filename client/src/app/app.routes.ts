@@ -8,6 +8,11 @@ export const APP_ROUTES: Routes = [
     loadChildren: './auth/auth.module#AuthModule',
   },
   {
+    path: 'home',
+    loadChildren: './home/home.module#HomeModule',
+    canLoad: [AuthGuard],
+  },
+  {
     path: 'profile',
     loadChildren: './profile/profile.module#ProfileModule',
     canLoad: [AuthGuard],
