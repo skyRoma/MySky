@@ -1,3 +1,24 @@
-<p>
-  weather works!
-</p>
+<mat-card class="weather-card">
+  <mat-card-header>
+    <img
+      class="weather-icon"
+      [src]="weatherIconUrl"
+      alt="weather-icon"
+      mat-card-avatar
+    />
+    <mat-card-title>Возможные виды парашютных прыжков</mat-card-title>
+    <mat-card-subtitle>При текущих погодных условиях</mat-card-subtitle>
+    <mat-divider></mat-divider>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item
+        *ngFor="let type of jumpTypes"
+        [class.disabled-item]="type.weatherLevel > maxAcceptableLvl"
+      >
+        <span mat-list-icon></span>
+        <h4 mat-line>{{ type.name }}</h4>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
