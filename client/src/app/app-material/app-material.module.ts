@@ -14,6 +14,8 @@ import {
   MatCardModule,
   MatListModule,
   MatDividerModule,
+  MatTableModule,
+  MatPaginatorModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -35,6 +37,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatCardModule,
     MatListModule,
     MatDividerModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   exports: [
     FlexLayoutModule,
@@ -51,6 +55,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatCardModule,
     MatListModule,
     MatDividerModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
 })
 export class AppMaterialModule {}

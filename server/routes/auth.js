@@ -60,7 +60,7 @@ router.post('/signin', function(req, res) {
             sub: user.id,
           };
           const options = {
-            expiresIn: 350,
+            expiresIn: 750,
           };
 
           const token = jwt.sign(payload, config.secret, options);

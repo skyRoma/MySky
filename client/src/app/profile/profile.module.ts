@@ -7,12 +7,14 @@ import { ProfileViewComponent } from './pages/profile-view/profile-view.componen
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 import { ProfileStatisticsComponent } from './profile-statistics/profile-statistics.component';
 import { AppMaterialModule } from '../app-material/app-material.module';
+import { JumpTableComponent } from './components/jump-table/jump-table.component';
 
 @NgModule({
   declarations: [
     ProfileViewComponent,
     ProfileEditComponent,
     ProfileStatisticsComponent,
+    JumpTableComponent,
   ],
   imports: [
     CommonModule,
