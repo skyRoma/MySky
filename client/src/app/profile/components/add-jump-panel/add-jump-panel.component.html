@@ -1,0 +1,88 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Новый прыжок
+    </mat-panel-title>
+    <mat-panel-description>
+      Введите данные
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <form [formGroup]="jumpForm" (ngSubmit)="onSubmit()">
+    <section class="form-fields-container" [class.single-line]="singleLine">
+      <div>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Дата"
+            [matDatepicker]="picker"
+            (focus)="picker.open()"
+            readonly
+            required
+            formControlName="date"
+          />
+        </mat-form-field>
+        <mat-datepicker #picker></mat-datepicker>
+
+        <mat-form-field>
+          <mat-label>Упражнение</mat-label>
+          <mat-select required formControlName="exercise">
+            <mat-option value="Ex1">Точность</mat-option>
+            <mat-option value="Ex2">Акробатика</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="parachute"
+            placeholder="Парашют"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="aircrafType"
+            placeholder="Воздушное судно"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="height"
+            type="number"
+            min="1"
+            placeholder="Высота"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="freeFallTime"
+            type="number"
+            min="0"
+            placeholder="Время своб. падения"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="result"
+            placeholder="Результат"
+            required
+          />
+        </mat-form-field>
+      </div>
+    </section>
+    <button color="primary" mat-flat-button>Добавить</button>
+  </form>
+</mat-expansion-panel>

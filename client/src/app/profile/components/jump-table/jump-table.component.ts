@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Jump } from 'src/app/core/models/jump';
 
@@ -6,9 +11,10 @@ import { Jump } from 'src/app/core/models/jump';
   selector: 'app-jump-table',
   templateUrl: './jump-table.component.html',
   styleUrls: ['./jump-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JumpTableComponent implements OnInit {
-  displayedColumns: string[] = [
+  displayedColumns = [
     'index',
     'date',
     'exercise',
@@ -20,7 +26,7 @@ export class JumpTableComponent implements OnInit {
   ];
 
   columns = [
-    { title: 'Номер', name: 'index' },
+    { title: 'Номер', name: 'index', sticky: true },
     { title: 'Дата', name: 'date' },
     { title: 'Упражнение', name: 'exercise' },
     { title: 'Парашют', name: 'parachute' },
@@ -36,18 +42,16 @@ export class JumpTableComponent implements OnInit {
     day: 'numeric',
   };
 
-  data = [
-    {
-      index: 1,
-      date: new Date().toLocaleString('ru', this.options),
-      exercise: 'Точность',
-      parachute: 'Мальва',
-      aircrafType: 'Ан-2',
-      height: 1200,
-      freeFallTime: 15,
-      result: 'H',
-    },
-  ];
+  data = new Array(40).fill({
+    index: 1,
+    date: new Date().toLocaleString('ru', this.options),
+    exercise: 'Точность',
+    parachute: 'Мальва',
+    aircrafType: 'Ан-2',
+    height: 1200,
+    freeFallTime: 15,
+    result: 'H',
+  });
 
   dataSource = new MatTableDataSource<Jump>(this.data);
 

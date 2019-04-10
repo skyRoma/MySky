@@ -1,10 +1,16 @@
 .statistics {
   background-color: #84edff1c;
   flex: 2;
-}
+  flex-direction: column;
+  justify-content: initial;
 
-.mat-card {
-  margin: 100px 0 50px;
-  width: 80%;
-  padding: 0;
+  .mat-card {
+    margin: 120px 0 35px;
+    width: 80%;
+    padding: 0;
+  }
+
+  .mat-tab-body-wrapper {
+    height: 356px;
+  }
 }

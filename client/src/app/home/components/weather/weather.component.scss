@@ -2,6 +2,13 @@
   margin-top: 130px;
   width: 50%;
   max-width: 980px;
+  min-width: 300px;
+
+  .mat-divider-horizontal {
+    bottom: 0px;
+    width: calc(100% + 32px);
+    margin-left: -16px;
+  }
 
   .mat-list-item {
     height: auto;
@@ -14,7 +21,7 @@
       height: 75px;
       background-repeat: no-repeat;
     }
-
+ 
     &:first-child {
       .mat-list-icon {
         background-position: -154px -2px;
@@ -54,12 +61,9 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  position: relative;
 }
 
 .mat-card-avatar {
   margin-bottom: 15px;
-}
-
-.mat-divider-horizontal {
-  top: 75px;
 }

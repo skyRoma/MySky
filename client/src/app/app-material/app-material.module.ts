@@ -16,6 +16,10 @@ import {
   MatDividerModule,
   MatTableModule,
   MatPaginatorModule,
+  MatExpansionModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSelectModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -39,6 +43,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatDividerModule,
     MatTableModule,
     MatPaginatorModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
   ],
   exports: [
     FlexLayoutModule,
@@ -57,6 +65,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatDividerModule,
     MatTableModule,
     MatPaginatorModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
   ],
 })
 export class AppMaterialModule {}

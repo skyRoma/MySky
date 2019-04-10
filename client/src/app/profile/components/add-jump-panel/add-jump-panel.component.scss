@@ -1,0 +1,29 @@
+.add-jump-panel {
+  width: 100%;
+
+  .mat-form-field {
+    margin: 0 5px;
+    width: 100%;
+  }
+
+  .mat-form-field-infix {
+    width: 115px;
+  }
+
+  .mat-expansion-panel {
+    margin: 0 35px;
+  }
+}
+
+.form-fields-container {
+  display: flex;
+  flex-direction: column;
+
+  &.single-line {
+    flex-direction: row;
+  }
+
+  & > div {
+    display: flex;
+  }
+}
