@@ -1,4 +1,4 @@
-<mat-expansion-panel>
+<mat-expansion-panel expanded="true">
   <mat-expansion-panel-header>
     <mat-panel-title>
       Новый прыжок
@@ -10,7 +10,7 @@
 
   <form [formGroup]="jumpForm" (ngSubmit)="onSubmit()">
     <section class="form-fields-container" [class.single-line]="singleLine">
-      <div>
+      <div fxLayout.lt-md="column">
         <mat-form-field>
           <input
             matInput
@@ -50,7 +50,7 @@
           />
         </mat-form-field>
       </div>
-      <div>
+      <div fxLayout.lt-md="column">
         <mat-form-field>
           <input
             matInput

@@ -29,7 +29,7 @@ export class AddJumpPanelComponent {
     private _breakpointObserver: BreakpointObserver
   ) {
     _breakpointObserver
-      .observe('(min-width: 1450px)')
+      .observe('(min-width: 1750px)')
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
           this.singleLine = true;
