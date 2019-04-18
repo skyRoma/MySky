@@ -17,7 +17,7 @@ import { AuthService } from '../../../core/services';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss', '../../auth.module.scss'],
+  styleUrls: ['../../auth.module.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'half-page' },
 })

@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
@@ -6,7 +6,6 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
   selector: 'app-add-jump-panel',
   templateUrl: './add-jump-panel.component.html',
   styleUrls: ['./add-jump-panel.component.scss'],
-  encapsulation: ViewEncapsulation.None,
   host: {
     class: 'add-jump-panel',
   },

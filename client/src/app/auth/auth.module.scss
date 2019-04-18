@@ -1,3 +1,14 @@
+.form-wrapper {
+  max-width: 350px;
+  padding: 40px;
+
+  .mat-flat-button,
+  .mat-form-field-suffix button.mat-icon-button[type='button'] {
+    width: fit-content;
+    height: fit-content;
+  }
+}
+
 blockquote {
   border-left: solid 3px #333;
   padding-left: 1px;
@@ -25,17 +36,6 @@ h1 {
   font-size: 24px;
   text-align: center;
   margin-bottom: 20px;
-}
-
-.form-wrapper {
-  max-width: 350px;
-  padding: 40px;
-
-  .mat-flat-button,
-  .mat-form-field-suffix button.mat-icon-button[type='button'] {
-    width: fit-content;
-    height: fit-content;
-  }
 }
 
 .submit {
