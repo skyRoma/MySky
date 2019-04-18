@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Jump } from 'src/app/core/models/jump';
+import { DISPLAYED_COLUMNS, COLUMNS } from './config/columns';
 
 @Component({
   selector: 'app-jump-table',
@@ -14,27 +15,9 @@ import { Jump } from 'src/app/core/models/jump';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JumpTableComponent implements OnInit {
-  displayedColumns = [
-    'index',
-    'date',
-    'exercise',
-    'parachute',
-    'aircrafType',
-    'height',
-    'freeFallTime',
-    'result',
-  ];
+  displayedColumns = DISPLAYED_COLUMNS;
 
-  columns = [
-    { title: 'Номер', name: 'index', sticky: true },
-    { title: 'Дата', name: 'date' },
-    { title: 'Упражнение', name: 'exercise' },
-    { title: 'Парашют', name: 'parachute' },
-    { title: 'Возудшное судно', name: 'aircrafType' },
-    { title: 'Высота', name: 'height' },
-    { title: 'Время своб. падения', name: 'freeFallTime' },
-    { title: 'Результат', name: 'result' },
-  ];
+  columns = COLUMNS;
 
   options = {
     year: 'numeric',

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileViewComponent } from './pages/profile-view/profile-view.component';
@@ -23,6 +24,7 @@ import { AddJumpPanelComponent } from './components/add-jump-panel/add-jump-pane
     ProfileRoutingModule,
     AppMaterialModule,
     ReactiveFormsModule,
+    ChartsModule,
   ],
 })
 export class ProfileModule {}
