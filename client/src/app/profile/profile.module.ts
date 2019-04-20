@@ -10,6 +10,7 @@ import { ProfileStatisticsComponent } from './pages/profile-statistics/profile-s
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { JumpTableComponent } from './components/jump-table/jump-table.component';
 import { JumpPanelComponent } from './components/jump-panel/jump-panel.component';
+import { JumpChartComponent } from './components/jump-chart/jump-chart.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { JumpPanelComponent } from './components/jump-panel/jump-panel.component
     ProfileStatisticsComponent,
     JumpTableComponent,
     JumpPanelComponent,
+    JumpChartComponent,
   ],
   imports: [
     CommonModule,

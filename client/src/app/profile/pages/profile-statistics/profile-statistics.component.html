@@ -10,7 +10,9 @@
         <mat-tab label="Информация о прыжках ">
           <app-jump-table (edit)="onEdit($event)"></app-jump-table>
         </mat-tab>
-        <mat-tab label="Статистика"> </mat-tab>
+        <mat-tab label="Статистика">
+          <app-jump-chart></app-jump-chart>
+        </mat-tab>
       </mat-tab-group>
     </mat-card>
     <app-jump-panel #jumpPanelRef></app-jump-panel>
