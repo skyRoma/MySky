@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { JUMP_TYPES } from './weather-config';
+
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
@@ -11,40 +13,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class WeatherComponent implements OnInit {
   maxAcceptableLvl: number;
+
   weatherIconUrl: string;
-  jumpTypes = [
-    {
-      img: '',
-      name: 'Тандем прыжок',
-      weatherLevel: 1,
-    },
-    {
-      img: '',
-      name: 'Самостоятельный прыжок с десантным парашютом',
-      weatherLevel: 3,
-    },
-    {
-      img: '',
-      name: 'Спортивный прыжок на точность приземления',
-      weatherLevel: 2,
-    },
-    {
-      img: '',
-      name: 'Спортивный прыжок на акробатику',
-      weatherLevel: 1,
-    },
-  ];
+
+  jumpTypes = JUMP_TYPES;
+
+  currentWeather: any;
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.data.subscribe((data: { weather: any }) => {
-      const currentWeather = data.weather;
+      this.currentWeather = data.weather;
 
       this.weatherIconUrl = `http://openweathermap.org/img/w/${
-        currentWeather.weather[0].icon
+        this.currentWeather.weather[0].icon
       }.png`;
 
-      this.maxAcceptableLvl = this.getWeatherLevel(currentWeather);
+      this.maxAcceptableLvl = this.getWeatherLevel(this.currentWeather);
     });
   }
 
