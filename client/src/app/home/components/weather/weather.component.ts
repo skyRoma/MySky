@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { JUMP_TYPES } from './weather-config';
@@ -7,6 +7,7 @@ import { JUMP_TYPES } from './weather-config';
   selector: 'app-weather',
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'app-weather',
   },
@@ -25,11 +26,9 @@ export class WeatherComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe((data: { weather: any }) => {
       this.currentWeather = data.weather;
-
       this.weatherIconUrl = `http://openweathermap.org/img/w/${
         this.currentWeather.weather[0].icon
       }.png`;
-
       this.maxAcceptableLvl = this.getWeatherLevel(this.currentWeather);
     });
   }

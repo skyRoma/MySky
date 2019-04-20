@@ -36,8 +36,11 @@ export class SignupComponent {
   );
 
   hidePassword = true;
+
   hideConfirmPassword = true;
+
   loading: boolean;
+
   errorMsg: string;
 
   constructor(
@@ -73,15 +76,19 @@ export class SignupComponent {
   get firstName(): AbstractControl {
     return this.signupForm.get('firstName');
   }
+
   get lastName(): AbstractControl {
     return this.signupForm.get('lastName');
   }
+
   get email(): AbstractControl {
     return this.signupForm.get('email');
   }
+
   get password(): AbstractControl {
     return this.signupForm.get('password');
   }
+
   get confirmPassword(): AbstractControl {
     return this.signupForm.get('confirmPassword');
   }

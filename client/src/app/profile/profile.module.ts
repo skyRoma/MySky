@@ -9,7 +9,7 @@ import { ProfileEditComponent } from './pages/profile-edit/profile-edit.componen
 import { ProfileStatisticsComponent } from './pages/profile-statistics/profile-statistics.component';
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { JumpTableComponent } from './components/jump-table/jump-table.component';
-import { AddJumpPanelComponent } from './components/add-jump-panel/add-jump-panel.component';
+import { JumpPanelComponent } from './components/jump-panel/jump-panel.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { AddJumpPanelComponent } from './components/add-jump-panel/add-jump-pane
     ProfileEditComponent,
     ProfileStatisticsComponent,
     JumpTableComponent,
-    AddJumpPanelComponent,
+    JumpPanelComponent,
   ],
   imports: [
     CommonModule,

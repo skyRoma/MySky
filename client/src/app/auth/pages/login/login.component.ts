@@ -77,6 +77,7 @@ export class LoginComponent implements OnInit {
   get email(): AbstractControl {
     return this.loginForm.get('email');
   }
+
   get password(): AbstractControl {
     return this.loginForm.get('password');
   }

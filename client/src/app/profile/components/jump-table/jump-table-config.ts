@@ -18,4 +18,22 @@ export const DISPLAYED_COLUMNS = [
   'height',
   'freeFallTime',
   'result',
+  'edit',
 ];
+
+export const DATE_OPTIONS = {
+  year: 'numeric',
+  month: 'numeric',
+  day: 'numeric',
+};
+
+export const MOCK_DATA = new Array(40).fill({
+  index: 1,
+  date: new Date(),
+  exercise: 'Точность',
+  parachute: 'Мальва',
+  aircrafType: 'Ан-2',
+  height: 1200,
+  freeFallTime: 15,
+  result: 'H',
+});

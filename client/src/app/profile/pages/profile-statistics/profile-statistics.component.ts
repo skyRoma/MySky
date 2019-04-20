@@ -1,4 +1,7 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+
+import { Jump } from 'src/app/core/models/jump';
+import { JumpPanelComponent } from '../../components/jump-panel/jump-panel.component';
 
 @Component({
   selector: 'app-profile-statistics',
@@ -6,4 +9,11 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./profile-statistics.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfileStatisticsComponent {}
+export class ProfileStatisticsComponent {
+  @ViewChild('jumpPanelRef')
+  jumpPanelRef: JumpPanelComponent;
+
+  onEdit(jump: Jump): void {
+    this.jumpPanelRef.open(jump);
+  }
+}
