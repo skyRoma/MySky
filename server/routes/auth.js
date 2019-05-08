@@ -1,6 +1,7 @@
 const env = process.env.NODE_ENV || 'development';
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const winston = require('../config/winston');
 
 const config = require('../config/config')[env];
 const userService = require('../services/user-service');
@@ -28,12 +29,13 @@ router.post('/signup', function(req, res) {
           .send({ success: true, msg: 'Вы успешно зарегистрировались.' })
       )
       .catch(error => {
-        if (error.parent.code === '23505') {
+        if (error.parent && error.parent.code === '23505') {
           res.status(httpCodes.CONFLICT).send({
             success: false,
             msg: 'Этот адресс электронной почты уже используется.',
           });
         } else {
+          winston.error(error);
           res.status(httpCodes.BAD_REQUEST).send(error);
         }
       });
@@ -73,7 +75,10 @@ router.post('/signin', function(req, res) {
         }
       });
     })
-    .catch(error => res.status(httpCodes.BAD_REQUEST).send(error));
+    .catch(error => {
+      winston.error(error);
+      res.status(httpCodes.BAD_REQUEST).send(error);
+    });
 });
 
 module.exports = router;
