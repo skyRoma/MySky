@@ -5,12 +5,12 @@ module.exports = {
     return queryInterface.bulkInsert('Jumps', [
       {
         date: new Date(),
-        exercise: 'Точность',
-        parachute: 'Мальва',
-        aircrafType: 'Ан-2',
+        exerciseId: 1,
+        parachuteId: 5,
+        aircraftId: 1,
         height: 1200,
         freeFallTime: 15,
-        result: 23,
+        result: '23',
         userId: 'da074df9-75d0-4a60-8b4c-90a184aa1d67',
       },
     ]);

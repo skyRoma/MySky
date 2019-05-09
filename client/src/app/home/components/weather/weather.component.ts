@@ -34,7 +34,11 @@ export class WeatherComponent implements OnInit {
   }
 
   getWeatherLevel(currentWeather: any): number {
-    if (currentWeather.clouds.all > 50 || currentWeather.rain) {
+    if (
+      currentWeather.clouds.all > 50 ||
+      currentWeather.rain ||
+      currentWeather.snow
+    ) {
       return 0;
     }
     if (currentWeather.wind.speed <= 3) {

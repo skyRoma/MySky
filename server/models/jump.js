@@ -13,17 +13,29 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DATE,
     },
-    exercise: {
+    exerciseId: {
       allowNull: false,
-      type: DataTypes.STRING,
+      references: {
+        model: 'Exercises',
+        key: 'id',
+      },
+      type: DataTypes.INTEGER,
     },
-    parachute: {
+    parachuteId: {
       allowNull: false,
-      type: DataTypes.STRING,
+      references: {
+        model: 'Parachutes',
+        key: 'id',
+      },
+      type: DataTypes.INTEGER,
     },
-    aircrafType: {
+    aircraftId: {
       allowNull: false,
-      type: DataTypes.STRING,
+      references: {
+        model: 'Aircrafts',
+        key: 'id',
+      },
+      type: DataTypes.INTEGER,
     },
     height: {
       allowNull: false,
@@ -35,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     result: {
       allowNull: false,
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     userId: {
       allowNull: false,
@@ -60,6 +72,15 @@ module.exports = (sequelize, DataTypes) => {
   Jump.associate = function(models) {
     Jump.belongsTo(models.User, {
       foreignKey: 'userId',
+    });
+    Jump.belongsTo(models.Aircraft, {
+      foreignKey: 'aircraftId',
+    });
+    Jump.belongsTo(models.Exercise, {
+      foreignKey: 'exerciseId',
+    });
+    Jump.belongsTo(models.Parachute, {
+      foreignKey: 'parachuteId',
     });
   };
   return Jump;

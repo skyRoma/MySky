@@ -14,17 +14,29 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      exercise: {
+      exerciseId: {
         allowNull: false,
-        type: Sequelize.STRING,
+        references: {
+          model: 'Exercises',
+          key: 'id',
+        },
+        type: Sequelize.INTEGER,
       },
-      parachute: {
+      parachuteId: {
         allowNull: false,
-        type: Sequelize.STRING,
+        references: {
+          model: 'Parachutes',
+          key: 'id',
+        },
+        type: Sequelize.INTEGER,
       },
-      aircrafType: {
+      aircraftId: {
         allowNull: false,
-        type: Sequelize.STRING,
+        references: {
+          model: 'Aircrafts',
+          key: 'id',
+        },
+        type: Sequelize.INTEGER,
       },
       height: {
         allowNull: false,
@@ -36,7 +48,7 @@ module.exports = {
       },
       result: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       userId: {
         allowNull: false,

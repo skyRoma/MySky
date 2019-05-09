@@ -11,11 +11,11 @@ import { AuthHttpResponse, MysToken } from '../models';
   providedIn: 'root',
 })
 export class AuthService {
-  private currentUserIdSubject: BehaviorSubject<string>;
-  public currentUserId: Observable<string>;
+  currentUserId: Observable<string>;
 
-  // redirectUrl: string;
   jwtHelper = new JwtHelperService();
+
+  private currentUserIdSubject: BehaviorSubject<string>;
 
   constructor(private http: HttpClient, private router: Router) {
     const token = this.getDecodedToken();

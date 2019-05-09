@@ -4,10 +4,13 @@ module.exports = {
   up: queryInterface => {
     return queryInterface.bulkInsert('Roles', [
       {
-        name: 'Пользователь',
+        name: 'Клиент',
       },
       {
         name: 'Администратор',
+      },
+      {
+        name: 'Cпортсмен',
       },
     ]);
   },
