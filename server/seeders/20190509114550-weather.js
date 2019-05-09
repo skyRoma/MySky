@@ -8,6 +8,7 @@ module.exports = {
         windSpeed: 5,
         rain: false,
         snow: false,
+        temp: 23,
         icon: '02d',
       },
     ]);

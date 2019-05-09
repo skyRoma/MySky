@@ -9,11 +9,11 @@ class Repository {
   }
 
   findAll(options) {
-    return this.model.findAll(options);
+    return this.model.findAll({ ...{ raw: true }, ...options });
   }
 
-  findById(id) {
-    return this.model.findByPk(id);
+  findById(id, options) {
+    return this.model.findByPk(id, { ...{ raw: true }, ...options });
   }
 
   create(entity) {

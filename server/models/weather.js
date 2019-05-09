@@ -25,6 +25,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.BOOLEAN,
     },
+    temp: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
     icon: {
       allowNull: false,
       type: DataTypes.STRING,

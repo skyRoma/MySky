@@ -26,6 +26,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.BOOLEAN,
       },
+      temp: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
       icon: {
         allowNull: false,
         type: Sequelize.STRING,
