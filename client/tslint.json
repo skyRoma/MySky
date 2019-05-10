@@ -13,6 +13,12 @@
     "forin": true,
     "import-blacklist": [true, "rxjs/Rx"],
     "import-spacing": true,
+    "ordered-imports": [
+      true,
+      {
+        "grouped-imports": true
+      }
+    ],
     "indent": [true, "spaces"],
     "interface-over-type-literal": true,
     "label-position": true,
@@ -22,11 +28,13 @@
       true,
       {
         "order": [
-          "static-field",
           "instance-field",
-          "static-method",
-          "instance-method"
-        ]
+          "constructor",
+          "public-instance-method",
+          "protected-instance-method",
+          "private-instance-method"
+        ],
+        "alphabetize": false
       }
     ],
     "no-arg": true,
