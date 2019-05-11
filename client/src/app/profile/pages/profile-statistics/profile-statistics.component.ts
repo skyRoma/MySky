@@ -1,6 +1,6 @@
-import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { Jump } from 'src/app/core/models/jump';
+
 import { JumpPanelComponent } from '../../components/jump-panel/jump-panel.component';
 
 @Component({

@@ -1,20 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddJumpPanelComponent } from './add-jump-panel.component';
+import { JumpPanelComponent } from './jump-panel.component';
 
 describe('AddJumpPanelComponent', () => {
-  let component: AddJumpPanelComponent;
-  let fixture: ComponentFixture<AddJumpPanelComponent>;
+  let component: JumpPanelComponent;
+  let fixture: ComponentFixture<JumpPanelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddJumpPanelComponent ]
-    })
-    .compileComponents();
+      declarations: [JumpPanelComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddJumpPanelComponent);
+    fixture = TestBed.createComponent(JumpPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

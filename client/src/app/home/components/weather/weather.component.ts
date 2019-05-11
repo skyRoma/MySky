@@ -1,8 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Wheather } from 'src/app/core/models';
 
 import { JUMP_TYPES } from './weather-config';
-import { Wheather } from 'src/app/core/models';
 
 @Component({
   selector: 'app-weather',

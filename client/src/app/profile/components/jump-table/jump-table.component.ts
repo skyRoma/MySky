@@ -1,15 +1,15 @@
 import {
-  Component,
-  OnInit,
-  ViewChild,
   ChangeDetectionStrategy,
-  Output,
+  Component,
   EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
 } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
-
 import { Jump } from 'src/app/core/models/jump';
-import { DISPLAYED_COLUMNS, COLUMNS, MOCK_DATA } from './jump-table-config';
+
+import { COLUMNS, DISPLAYED_COLUMNS, MOCK_DATA } from './jump-table-config';
 
 @Component({
   selector: 'app-jump-table',

@@ -1,18 +1,19 @@
 import {
-  Component,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  Component,
 } from '@angular/core';
 import {
-  Validators,
+  AbstractControl,
   FormBuilder,
   FormControl,
-  AbstractControl,
+  Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { MustMatch } from './must-match-validator';
 import { AuthService } from '../../../core/services';
+
+import { MustMatch } from './must-match-validator';
 
 @Component({
   selector: 'app-signup',

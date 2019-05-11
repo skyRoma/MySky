@@ -1,12 +1,12 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
-  Validators,
-  FormBuilder,
   AbstractControl,
+  FormBuilder,
   FormControl,
   FormGroup,
+  Validators,
 } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/core/models';
 import { UserService } from 'src/app/core/services';
 

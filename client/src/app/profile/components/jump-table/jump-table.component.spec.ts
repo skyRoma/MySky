@@ -8,9 +8,8 @@ describe('JumpTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JumpTableComponent ]
-    })
-    .compileComponents();
+      declarations: [JumpTableComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

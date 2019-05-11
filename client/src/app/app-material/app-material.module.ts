@@ -1,27 +1,27 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  MatIconModule,
-  MatMenuModule,
-  MatToolbarModule,
-  MatButtonModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatProgressSpinnerModule,
-  MatSnackBarModule,
-  MatTooltipModule,
-  MatTabsModule,
-  MatCardModule,
-  MatListModule,
-  MatDividerModule,
-  MatTableModule,
-  MatPaginatorModule,
-  MatExpansionModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-  MatSelectModule,
-} from '@angular/material';
+import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSnackBarModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+} from '@angular/material';
 
 @NgModule({
   declarations: [],

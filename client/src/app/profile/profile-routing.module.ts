@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
-import { ProfileViewComponent } from './pages/profile-view/profile-view.component';
 import { ProfileStatisticsComponent } from './pages/profile-statistics/profile-statistics.component';
+import { ProfileViewComponent } from './pages/profile-view/profile-view.component';
 import { ProfileResolverService } from './profile-resolver.service';
 
 const routes: Routes = [

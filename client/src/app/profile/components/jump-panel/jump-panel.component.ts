@@ -1,15 +1,15 @@
-import {
-  Component,
-  ViewChild,
-  ElementRef,
-  ChangeDetectionStrategy,
-} from '@angular/core';
-import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-
-import { Jump } from 'src/app/core/models/jump';
-import { EXERCISE_OPTIONS } from './jump-panel-config';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { MatExpansionPanel } from '@angular/material';
+import { Jump } from 'src/app/core/models/jump';
+
+import { EXERCISE_OPTIONS } from './jump-panel-config';
 
 @Component({
   selector: 'app-jump-panel',

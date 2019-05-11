@@ -8,9 +8,8 @@ describe('JumpChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JumpChartComponent ]
-    })
-    .compileComponents();
+      declarations: [JumpChartComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
