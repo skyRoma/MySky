@@ -29,8 +29,11 @@ export class LoginComponent implements OnInit {
   });
 
   hidePassword = true;
+
   returnUrl: string;
+
   loading = false;
+
   errorMsg: string;
 
   constructor(
@@ -46,7 +49,6 @@ export class LoginComponent implements OnInit {
     this.authService.logout();
     const queryParams = this.route.snapshot.queryParams;
     this.returnUrl = queryParams['returnUrl'] || '/';
-
     if (queryParams['from'] === 'signup') {
       setTimeout(() => {
         this.snackBar.open(

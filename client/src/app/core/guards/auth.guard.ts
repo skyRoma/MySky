@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  Route,
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
@@ -21,16 +22,16 @@ export class AuthGuard implements CanActivate {
     return this.checkAuth(state);
   }
 
-  canLoad(state: RouterStateSnapshot): boolean {
+  canLoad(route: Route): boolean {
+    const state = this.router.routerState.snapshot;
     return this.checkAuth(state);
   }
 
-  checkAuth(state) {
+  private checkAuth(state: RouterStateSnapshot): boolean {
     if (this.auth.isAuthTokenExpired()) {
       this.router.navigate(['/auth/login'], {
         queryParams: { returnUrl: state.url },
       });
-
       return false;
     }
     return true;
