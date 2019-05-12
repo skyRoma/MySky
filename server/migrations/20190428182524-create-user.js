@@ -36,7 +36,7 @@ module.exports = {
           model: 'Roles',
           key: 'id',
         },
-        defaultValue: 1,
+        defaultValue: 2,
         type: Sequelize.INTEGER,
       },
       createdAt: {

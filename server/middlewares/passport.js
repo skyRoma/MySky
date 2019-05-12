@@ -14,7 +14,7 @@ module.exports = function(passport) {
     'jwt',
     new JwtStrategy(opts, function(jwt_payload, done) {
       userService
-        .findById(jwt_payload.sub)
+        .findById(jwt_payload.id)
         .then(user => {
           return done(null, user);
         })

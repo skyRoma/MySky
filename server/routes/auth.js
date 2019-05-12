@@ -2,6 +2,7 @@ const env = process.env.NODE_ENV || 'development';
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const winston = require('../config/winston');
+const model = require('../models');
 
 const config = require('../config/config')[env];
 const userService = require('../services/user-service');
@@ -48,6 +49,7 @@ router.post('/signin', function(req, res) {
       where: {
         email: req.body.email,
       },
+      include: [model.Role],
     })
     .then(user => {
       if (!user) {
@@ -59,14 +61,15 @@ router.post('/signin', function(req, res) {
       user.comparePassword(req.body.password, (err, isMatch) => {
         if (isMatch && !err) {
           const payload = {
-            sub: user.id,
+            sub: 'auth',
+            id: user.id,
+            role: user.Role.name,
           };
           const options = {
             expiresIn: 750,
           };
-
           const token = jwt.sign(payload, config.secret, options);
-          res.json({ success: true, msg: token });
+          res.status(httpCodes.OK).send({ success: true, msg: token });
         } else {
           res.status(httpCodes.UNAUTHORIZED).send({
             success: false,

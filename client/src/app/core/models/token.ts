@@ -3,6 +3,7 @@ export class MysToken {
     readonly sub: string,
     readonly iat: number,
     readonly exp: number,
-    readonly role: string
+    readonly role: string,
+    readonly id: string
   ) {}
 }

@@ -14,6 +14,13 @@
     <button mat-button [routerLink]="['/profile', currentUserId]">
       <mat-icon>person</mat-icon>Профиль
     </button>
+    <button
+      *ngIf="isAdministrator"
+      mat-button
+      [routerLink]="['/profile', currentUserId]"
+    >
+      <mat-icon>dvr</mat-icon>Aдминистратор
+    </button>
     <button mat-button *ngIf="currentUserId" (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>Выйти
     </button>
@@ -28,6 +35,13 @@
   </button>
   <button mat-menu-item [routerLink]="['/profile', currentUserId]">
     <mat-icon>person</mat-icon> Профиль
+  </button>
+  <button
+    *ngIf="isAdministrator"
+    mat-menu-item
+    [routerLink]="['/profile', currentUserId]"
+  >
+    <mat-icon>dvr</mat-icon>Aдминистратор
   </button>
   <button mat-menu-item *ngIf="currentUserId" (click)="logout()">
     <mat-icon>exit_to_app</mat-icon>

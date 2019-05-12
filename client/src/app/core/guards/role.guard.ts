@@ -5,14 +5,14 @@ import { AuthService } from '../services';
 
 @Injectable()
 export class RoleGuard implements CanActivate {
-  constructor(public auth: AuthService, public router: Router) {}
+  constructor(public authService: AuthService, public router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const expectedRole = route.data.expectedRole;
-    const tokenPayload = this.auth.getDecodedToken();
+    const tokenPayload = this.authService.getDecodedToken();
 
     if (
-      this.auth.isAuthTokenExpired() ||
+      this.authService.isAuthTokenExpired() ||
       tokenPayload.role !== expectedRole
     ) {
       this.router.navigate(['auth/login']);

@@ -1,6 +1,7 @@
 const express = require('express');
 const userService = require('../services/user-service');
 const { handleSuccess } = require('../middlewares/responseHandler');
+const model = require('../models');
 
 const router = express.Router();
 
@@ -9,7 +10,21 @@ function findAll() {
 }
 
 function findById(req) {
-  return userService.findById(req.params.id);
+  return userService.findById(req.params.id, {
+    attributes: [
+      'firstName',
+      'lastName',
+      'email',
+      'phoneNumber',
+      [model.sequelize.col('Role.name'), 'role'],
+    ],
+    include: [
+      {
+        model: model.Role,
+        attributes: [],
+      },
+    ],
+  });
 }
 
 function create(req) {

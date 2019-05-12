@@ -1,4 +1,5 @@
 const uuidv4 = require('uuid/v4');
+const bcrypt = require('bcrypt-nodejs');
 
 const FIRST_NAMES = [
   'Антон',
@@ -106,7 +107,13 @@ const LAST_NAMES = [
   'Славский',
 ];
 
-function makeEmail() {
+function makeEmail(index) {
+  if (index === 0) {
+    return 'admin@mail.com';
+  }
+  if (index === 1) {
+    return 'sport@mail.com';
+  }
   let result = '';
   const characters =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -115,6 +122,26 @@ function makeEmail() {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return result + '@mail.com';
+}
+
+function makePassword(index) {
+  if (index === 0) {
+    return bcrypt.hashSync('adminadmin', bcrypt.genSaltSync(10));
+  }
+  if (index === 1) {
+    return bcrypt.hashSync('sportsport', bcrypt.genSaltSync(10));
+  }
+  return bcrypt.hashSync('pa$$w0rd', bcrypt.genSaltSync(10));
+}
+
+function makeRoleId(index) {
+  if (index === 0) {
+    return 1;
+  }
+  if (index === 1) {
+    return 3;
+  }
+  return 2;
 }
 
 function makePhoneNumber() {
@@ -134,10 +161,10 @@ function makeUsers(count) {
       id: USER_IDS[i],
       firstName: FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)],
       lastName: LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)],
-      email: makeEmail(),
-      password: 'pa$$w0rd',
+      email: makeEmail(i),
+      password: makePassword(i),
       phoneNumber: makePhoneNumber(),
-      roleId: i === 0 ? 2 : 1,
+      roleId: makeRoleId(i),
     };
   });
   return { USERS, USER_IDS };

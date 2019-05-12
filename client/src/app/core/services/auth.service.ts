@@ -19,9 +19,8 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {
     const token = this.getDecodedToken();
-
     this.currentUserIdSubject = new BehaviorSubject<string>(
-      token ? token.sub : null
+      token ? token.id : null
     );
     this.currentUserId = this.currentUserIdSubject.asObservable();
   }
@@ -53,7 +52,7 @@ export class AuthService {
         tap(res => {
           if (res) {
             localStorage.setItem('MySkyJwt', res.msg);
-            this.currentUserIdSubject.next(this.getDecodedToken().sub);
+            this.currentUserIdSubject.next(this.getDecodedToken().id);
           }
         })
       );
@@ -69,7 +68,7 @@ export class AuthService {
     return localStorage.getItem('MySkyJwt');
   }
 
-  getDecodedToken(): MysToken {
+  getDecodedToken(): MysToken | null {
     return this.jwtHelper.decodeToken(this.getToken());
   }
 

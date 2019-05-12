@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     roleId: {
       allowNull: false,
-      defaultValue: 1,
+      defaultValue: 2,
       references: {
         model: 'Roles',
         key: 'id',
