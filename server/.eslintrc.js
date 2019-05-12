@@ -15,5 +15,7 @@ module.exports = {
   rules: {
     'no-var': 'error',
     'prefer-const': 'error',
+    'sort-requires/sort-requires': 2,
   },
+  plugins: ['sort-requires'],
 };

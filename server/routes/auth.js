@@ -1,13 +1,13 @@
-const env = process.env.NODE_ENV || 'development';
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const winston = require('../config/winston');
-const model = require('../models');
 
 const config = require('../config/config')[env];
-const userService = require('../services/user-service');
 const httpCodes = require('../config/httpCodes');
+const model = require('../models');
+const userService = require('../services/user-service');
+const winston = require('../config/winston');
 
+const env = process.env.NODE_ENV || 'development';
 const router = express.Router();
 
 router.post('/signup', function(req, res) {

@@ -1,6 +1,7 @@
-const winston = require('../config/winston');
 const httpCodes = require('../config/httpCodes');
+const winston = require('../config/winston');
 const { NotFound } = require('../errors');
+
 const env = process.env.NODE_ENV || 'development';
 
 function handleError(error, req, res, next) {

@@ -1,5 +1,5 @@
-const uuidv4 = require('uuid/v4');
 const bcrypt = require('bcrypt-nodejs');
+const uuidv4 = require('uuid/v4');
 
 const FIRST_NAMES = [
   'Антон',

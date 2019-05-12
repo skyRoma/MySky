@@ -1,14 +1,14 @@
 require('dotenv').config();
 // const db = require('./models');
-const express = require('express');
 const bodyParser = require('body-parser');
-const morgan = require('morgan');
 const cors = require('cors');
+const express = require('express');
+const morgan = require('morgan');
 const passport = require('passport');
 
-const winston = require('./config/winston');
 const responseHandler = require('./middlewares/responseHandler');
 const routes = require('./routes');
+const winston = require('./config/winston');
 
 require('./middlewares/passport')(passport);
 

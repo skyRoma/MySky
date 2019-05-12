@@ -1,7 +1,8 @@
 const express = require('express');
+
+const model = require('../models');
 const userService = require('../services/user-service');
 const { handleSuccess } = require('../middlewares/responseHandler');
-const model = require('../models');
 
 const router = express.Router();
 

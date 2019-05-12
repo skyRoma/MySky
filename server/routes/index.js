@@ -1,8 +1,8 @@
 const express = require('express');
 const passport = require('passport');
 
-const responseHandler = require('../middlewares/responseHandler');
 const authRouter = require('./auth');
+const responseHandler = require('../middlewares/responseHandler');
 const userRouter = require('./user');
 const weatherRouter = require('./weather');
 
