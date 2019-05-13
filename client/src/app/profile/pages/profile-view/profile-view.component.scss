@@ -1,0 +1,23 @@
+.user-info {
+  & > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+
+    .mat-icon {
+      font-size: 26px;
+    }
+
+    .mat-icon-button:hover {
+      .mat-icon {
+        color: black;
+      }
+    }
+  }
+}
+
+.user-info-title {
+  color: #c4c4c4;
+  font-size: 15px;
+}

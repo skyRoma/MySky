@@ -18,10 +18,16 @@
     "passport-local": "^1.0.0",
     "pg": "^7.8.2",
     "pg-hstore": "^2.3.2",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
     "sequelize": "^4.43.0",
-    "sequelize-cli": "^5.4.0"
+    "sequelize-cli": "^5.4.0",
+    "uuid": "^3.3.2",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-plugin-sort-requires": "^2.1.0",
     "nodemon": "^1.18.10"
   }
 }

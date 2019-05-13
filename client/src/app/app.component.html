@@ -1,24 +1,23 @@
 <mat-toolbar
-  *ngIf="authService.isAuthenticated()"
+  *ngIf="currentUserId"
   color="primary"
-  class="expanded-toolbar"
+  class="expanded-toolbar mat-elevation-z5"
 >
   <button class="logo" mat-button routerLink="/">
-    <img src="../assets/auth-background.png" alt="logo">{{ title }}
+    <img src="../assets/auth-background.png" alt="logo" />{{ title }}
   </button>
 
   <div fxLayout="row" fxHide fxShow.gt-sm>
     <button mat-button routerLink="/">
       <mat-icon>home</mat-icon>Главная
     </button>
-    <button mat-button routerLink="/profile">
+    <button mat-button [routerLink]="['/profile', currentUserId]">
       <mat-icon>person</mat-icon>Профиль
     </button>
-    <button
-      mat-button
-      *ngIf="authService.isAuthenticated()"
-      (click)="logout()"
-    >
+    <button *ngIf="isAdministrator" mat-button routerLink="/admin">
+      <mat-icon>dvr</mat-icon>Aдминистратор
+    </button>
+    <button mat-button *ngIf="currentUserId" (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>Выйти
     </button>
   </div>
@@ -30,14 +29,13 @@
   <button mat-menu-item routerLink="/">
     <mat-icon>home</mat-icon> Главная
   </button>
-  <button mat-menu-item routerLink="/profile">
+  <button mat-menu-item [routerLink]="['/profile', currentUserId]">
     <mat-icon>person</mat-icon> Профиль
   </button>
-  <button
-    mat-menu-item
-    *ngIf="authService.isAuthenticated()"
-    (click)="logout()"
-  >
+  <button *ngIf="isAdministrator" mat-menu-item routerLink="/admin">
+    <mat-icon>dvr</mat-icon>Aдминистратор
+  </button>
+  <button mat-menu-item *ngIf="currentUserId" (click)="logout()">
     <mat-icon>exit_to_app</mat-icon>
     Выйти
   </button>

@@ -1,21 +1,28 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
-import { AuthService } from './core/auth/auth.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import { AuthService } from './core/services';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   title = 'MySky';
 
-  constructor(public authService: AuthService) {}
+  currentUserId: string;
+
+  constructor(public authService: AuthService) {
+    this.authService.currentUserId.subscribe(id => {
+      this.currentUserId = id;
+    });
+  }
+
+  get isAdministrator(): boolean {
+    const token = this.authService.getDecodedToken();
+    return token && token.role === 'Администратор';
+  }
 
   logout(): void {
     this.authService.logout();

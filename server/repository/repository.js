@@ -8,31 +8,24 @@ class Repository {
     this.delete = this.delete.bind(this);
   }
 
-  findAll() {
-    return this.model.query();
+  findAll(options) {
+    return this.model.findAll({ ...{ raw: true }, ...options });
   }
 
-  findById(id) {
-    return this.model.query().findById(id);
-  }
-
-  findOne(fieldsObj) {
-    return this.model.query().findOne(fieldsObj);
+  findById(id, options) {
+    return this.model.findByPk(id, { ...{ raw: true }, ...options });
   }
 
   create(entity) {
-    return this.model.query().insert(entity);
+    return this.model.create(entity);
   }
 
   update(id, entity) {
-    return this.model
-      .query()
-      .where({ id })
-      .update(entity);
+    return this.model.update(entity, { where: { id } });
   }
 
   delete(id) {
-    return this.model.query().deleteById(id);
+    return this.model.destroy({ where: { id } });
   }
 }
 

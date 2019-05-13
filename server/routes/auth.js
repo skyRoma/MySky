@@ -1,50 +1,60 @@
-const env = process.env.NODE_ENV || 'development';
-const config = require('../config/config')[env];
 const express = require('express');
 const jwt = require('jsonwebtoken');
+
+const env = process.env.NODE_ENV || 'development';
+
+const config = require('../config/config')[env];
+const httpCodes = require('../config/httpCodes');
+const model = require('../models');
+const userService = require('../services/user-service');
+const winston = require('../config/winston');
+
 const router = express.Router();
-const User = require('../models').User;
 
 router.post('/signup', function(req, res) {
   if (!req.body.email || !req.body.password) {
-    res.status(400).send({
+    res.status(httpCodes.BAD_REQUEST).send({
       success: false,
       msg: 'Пожалуйста введите адресс электронной почты и пароль.',
     });
   } else {
-    User.create({
-      email: req.body.email,
-      password: req.body.password,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-    })
+    userService
+      .create({
+        email: req.body.email,
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+      })
       .then(() =>
         res
-          .status(201)
+          .status(httpCodes.CREATED)
           .send({ success: true, msg: 'Вы успешно зарегистрировались.' })
       )
       .catch(error => {
-        if ((error.parent.code = 23505)) {
-          res.status(409).send({
+        if (error.parent && error.parent.code === '23505') {
+          res.status(httpCodes.CONFLICT).send({
             success: false,
             msg: 'Этот адресс электронной почты уже используется.',
           });
         } else {
-          res.status(400).send(error);
+          winston.error(error);
+          res.status(httpCodes.BAD_REQUEST).send(error);
         }
       });
   }
 });
 
 router.post('/signin', function(req, res) {
-  User.find({
-    where: {
-      email: req.body.email,
-    },
-  })
+  userService
+    .findOne({
+      where: {
+        email: req.body.email,
+      },
+      include: [model.Role],
+    })
     .then(user => {
       if (!user) {
-        return res.status(401).send({
+        return res.status(httpCodes.UNAUTHORIZED).send({
           success: false,
           msg: 'Неправильный адрес электронной почты или пароль.',
         });
@@ -52,23 +62,27 @@ router.post('/signin', function(req, res) {
       user.comparePassword(req.body.password, (err, isMatch) => {
         if (isMatch && !err) {
           const payload = {
-            sub: user.id,
+            sub: 'auth',
+            id: user.id,
+            role: user.Role.name,
           };
           const options = {
-            expiresIn: 30,
+            expiresIn: 750,
           };
-
-          var token = jwt.sign(payload, config.secret, options);
-          res.json({ success: true, msg: token });
+          const token = jwt.sign(payload, config.secret, options);
+          res.status(httpCodes.OK).send({ success: true, msg: token });
         } else {
-          res.status(401).send({
+          res.status(httpCodes.UNAUTHORIZED).send({
             success: false,
             msg: 'Неправильный адрес электронной почты или пароль.',
           });
         }
       });
     })
-    .catch(error => res.status(400).send(error));
+    .catch(error => {
+      winston.error(error);
+      res.status(httpCodes.BAD_REQUEST).send(error);
+    });
 });
 
 module.exports = router;

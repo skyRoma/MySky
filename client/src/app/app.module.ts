@@ -1,15 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AppMaterialModule } from './app-material/app-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TokenInterceptor } from './core/interceptors/token.interceptor';
+import { ErrorInterceptor, TokenInterceptor } from './core/interceptors';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AppMaterialModule } from './app-material/app-material.module';
-import { HomeModule } from './home/home.module';
-import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent],
@@ -18,7 +16,6 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     HttpClientModule,
     BrowserAnimationsModule,
     AppMaterialModule,
-    HomeModule,
     AppRoutingModule,
   ],
   providers: [

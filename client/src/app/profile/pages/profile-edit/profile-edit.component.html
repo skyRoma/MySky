@@ -1,0 +1,60 @@
+<section class="user-info">
+  <div>
+    Основное:
+  </div>
+
+  <form [formGroup]="profileEdit" (ngSubmit)="onSubmit()" fxLayout="column">
+    <mat-form-field>
+      <mat-label>Имя</mat-label>
+      <input
+        class="user-info-data"
+        matInput
+        formControlName="firstName"
+        required
+      />
+      <mat-error *ngIf="firstName.invalid">{{
+        getErrorMessage(firstName)
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Фамилия</mat-label>
+      <input
+        class="user-info-data"
+        matInput
+        formControlName="lastName"
+        required
+      />
+      <mat-error *ngIf="lastName.invalid">{{
+        getErrorMessage(lastName)
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Адрес электронной почты</mat-label>
+      <input
+        class="user-info-data"
+        matInput
+        formControlName="email"
+        required
+      />
+      <mat-error *ngIf="email.invalid">{{
+        getErrorMessage(email)
+      }}</mat-error>
+    </mat-form-field>
+
+    <div class="submit">
+      <button
+        color="primary"
+        mat-flat-button
+        type="submit"
+        [disabled]="!profileEdit.valid"
+      >
+        Сохранить
+      </button>
+      <mat-spinner *ngIf="loading" diameter="33"></mat-spinner>
+    </div>
+
+    <p *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</p>
+  </form>
+</section>

@@ -1,0 +1,24 @@
+.user-info {
+  & > div:first-child {
+    font-size: 27px;
+    color: #b0b0b0;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  font-family: 'Lucida Sans', sans-serif;
+  font-weight: bold;
+  align-items: initial;
+
+  & > div,
+  .mat-form-field {
+    margin-top: 40px;
+  }
+}
+
+.user-info-data {
+  font-size: 23px;
+  margin-top: 5px;
+}

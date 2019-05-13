@@ -1,0 +1,16 @@
+.statistics ::ng-deep {
+  background-color: #84edff1c;
+  flex: 2;
+  flex-direction: column;
+  justify-content: initial;
+
+  .mat-card {
+    margin: 120px 0 35px;
+    width: 80%;
+    padding: 0;
+  }
+
+  .mat-tab-body-wrapper {
+    height: 356px;
+  }
+}

@@ -1,14 +1,16 @@
 require('dotenv').config();
-const db = require('./models');
-const express = require('express');
+// const db = require('./models');
 const bodyParser = require('body-parser');
-const logger = require('morgan');
 const cors = require('cors');
-
-const authRouter = require('./routes/auth');
-const poductRouter = require('./routes/product');
+const express = require('express');
+const morgan = require('morgan');
 const passport = require('passport');
-require('./config/passport')(passport);
+
+const responseHandler = require('./middlewares/responseHandler');
+const routes = require('./routes');
+const winston = require('./config/winston');
+
+require('./middlewares/passport')(passport);
 
 const corsOptions = {
   origin: 'http://localhost:4200',
@@ -43,17 +45,13 @@ const corsOptions = {
 const app = express();
 
 app.use(cors(corsOptions));
-app.use(logger('dev'));
+app.use(morgan('combined', { stream: winston.stream }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(routes);
 
-app.use('/auth', authRouter);
-app.use(
-  '/products',
-  passport.authenticate('jwt', { session: false }),
-  poductRouter
-);
+app.use(responseHandler.handleError);
 
 app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+  winston.info('Server is up on port 3000');
 });

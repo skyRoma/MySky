@@ -1,27 +1,26 @@
 import {
-  Component,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
   ChangeDetectorRef,
+  Component,
 } from '@angular/core';
 import {
-  Validators,
+  AbstractControl,
   FormBuilder,
   FormControl,
-  AbstractControl,
+  Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { AuthService } from '../../../core/services';
+
 import { MustMatch } from './must-match-validator';
-import { AuthService } from 'src/app/core/auth/auth.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss', '../../auth.module.scss'],
+  styleUrls: ['../../auth.module.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  host: { class: 'app-signup' },
+  host: { class: 'half-page' },
 })
 export class SignupComponent {
   signupForm = this.fb.group(
@@ -38,8 +37,11 @@ export class SignupComponent {
   );
 
   hidePassword = true;
+
   hideConfirmPassword = true;
+
   loading: boolean;
+
   errorMsg: string;
 
   constructor(
@@ -75,15 +77,19 @@ export class SignupComponent {
   get firstName(): AbstractControl {
     return this.signupForm.get('firstName');
   }
+
   get lastName(): AbstractControl {
     return this.signupForm.get('lastName');
   }
+
   get email(): AbstractControl {
     return this.signupForm.get('email');
   }
+
   get password(): AbstractControl {
     return this.signupForm.get('password');
   }
+
   get confirmPassword(): AbstractControl {
     return this.signupForm.get('confirmPassword');
   }
@@ -92,7 +98,7 @@ export class SignupComponent {
     return formControl.hasError('required')
       ? 'Вы должны ввести значение'
       : formControl.hasError('email')
-      ? 'Вы должны ввести значение'
+      ? 'Введите правильный адрес электронной почты'
       : formControl.hasError('mustMatch')
       ? 'Пароли не совпадают'
       : formControl.hasError('minlength')

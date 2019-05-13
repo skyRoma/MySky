@@ -1,10 +1,12 @@
-.app-login,
-.app-signup {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #84edff1c;
+.form-wrapper {
+  max-width: 350px;
+  padding: 40px;
+
+  .mat-flat-button,
+  .mat-form-field-suffix button.mat-icon-button[type='button'] {
+    width: fit-content;
+    height: fit-content;
+  }
 }
 
 blockquote {
@@ -36,29 +38,17 @@ h1 {
   margin-bottom: 20px;
 }
 
-.form-wrapper {
-  max-width: 350px;
-  padding: 40px;
-
-  .mat-flat-button,
-  .mat-form-field-suffix button.mat-icon-button[type='button'] {
-    width: fit-content;
-    height: fit-content;
-  }
-}
-
 .submit {
   display: flex;
   align-items: center;
-      margin-top: 10px;
-
+  margin-top: 10px;
 }
 
 .mat-spinner {
   margin-left: 35px;
 }
 
-.error-msg{
+.error-msg {
   color: #721c24;
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;

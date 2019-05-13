@@ -1,28 +1,26 @@
 import {
-  Component,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
-  OnInit,
   ChangeDetectorRef,
+  Component,
+  OnInit,
 } from '@angular/core';
 import {
-  FormBuilder,
-  Validators,
-  FormControl,
   AbstractControl,
+  FormBuilder,
+  FormControl,
+  Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { AuthService } from 'src/app/core/auth/auth.service';
+import { AuthService } from '../../../core/services';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss', '../../auth.module.scss'],
+  styleUrls: ['../../auth.module.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  host: { class: 'app-login' },
+  host: { class: 'half-page' },
 })
 export class LoginComponent implements OnInit {
   loginForm = this.fb.group({
@@ -31,8 +29,11 @@ export class LoginComponent implements OnInit {
   });
 
   hidePassword = true;
+
   returnUrl: string;
+
   loading = false;
+
   errorMsg: string;
 
   constructor(
@@ -48,7 +49,6 @@ export class LoginComponent implements OnInit {
     this.authService.logout();
     const queryParams = this.route.snapshot.queryParams;
     this.returnUrl = queryParams['returnUrl'] || '/';
-
     if (queryParams['from'] === 'signup') {
       setTimeout(() => {
         this.snackBar.open(
@@ -79,6 +79,7 @@ export class LoginComponent implements OnInit {
   get email(): AbstractControl {
     return this.loginForm.get('email');
   }
+
   get password(): AbstractControl {
     return this.loginForm.get('password');
   }

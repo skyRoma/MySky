@@ -1,8 +1,9 @@
 export class User {
-  id: string;
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  token?: string;
+  constructor(
+    readonly firstName: string,
+    readonly lastName: string,
+    readonly email: string,
+    readonly role: string,
+    readonly phoneNumber?: string
+  ) {}
 }
