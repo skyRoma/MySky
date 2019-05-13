@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  Resolve,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { WeatherService } from '../core/services/weather.service';
@@ -14,10 +10,7 @@ import { WeatherService } from '../core/services/weather.service';
 export class HomeResolverService implements Resolve<any> {
   constructor(private weatherService: WeatherService) {}
 
-  resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<any> | Observable<any> {
+  resolve(): Observable<any> | Observable<any> {
     return this.weatherService.getWeather();
   }
 }

@@ -1,0 +1,25 @@
+.expanded-toolbar {
+  justify-content: flex-end;
+  position: fixed;
+  top: 64px;
+
+  .mat-button-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .mat-icon {
+    margin-right: 7px;
+  }
+}
+
+.main-content {
+    
+}
+
+
+@media (max-width: 599px) {
+  .expanded-toolbar {
+    top: 56px;
+  }
+}

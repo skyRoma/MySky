@@ -1,0 +1,10 @@
+<mat-list>
+  <mat-list-item *ngFor="let user of users" [matMenuTriggerFor]="menu">
+    {{ getFullName(user) }}
+    <mat-icon>arrow_right</mat-icon>
+  </mat-list-item>
+</mat-list>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Персональные данные</button>
+  <button mat-menu-item>Прыжки</button>
+</mat-menu>

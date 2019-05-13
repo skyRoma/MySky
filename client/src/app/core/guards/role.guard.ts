@@ -22,7 +22,7 @@ export class RoleGuard implements CanActivate {
     return this.checkRole(route);
   }
 
-  private checkRole(route): boolean {
+  private checkRole(route: Route | ActivatedRouteSnapshot): boolean {
     const expectedRole = route.data.expectedRole;
     const tokenPayload = this.authService.getDecodedToken();
     if (tokenPayload.role !== expectedRole) {

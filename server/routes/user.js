@@ -7,7 +7,21 @@ const { handleSuccess } = require('../middlewares/responseHandler');
 const router = express.Router();
 
 function findAll() {
-  return userService.findAll();
+  return userService.findAll({
+    attributes: [
+      'firstName',
+      'lastName',
+      'email',
+      'phoneNumber',
+      [model.sequelize.col('Role.name'), 'role'],
+    ],
+    include: [
+      {
+        model: model.Role,
+        attributes: [],
+      },
+    ],
+  });
 }
 
 function findById(req) {

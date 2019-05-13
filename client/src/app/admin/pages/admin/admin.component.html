@@ -1,0 +1,16 @@
+<mat-toolbar color="primary" class="expanded-toolbar mat-elevation-z5">
+  <div fxLayout="row">
+    <button mat-button><mat-icon>person</mat-icon>Пользователи</button>
+    <button mat-button><mat-icon>dvr</mat-icon>Расписание</button>
+  </div>
+</mat-toolbar>
+
+<section
+  class="main-content full-page-flex-wrapper"
+  fxLayout="row"
+  fxLayout.lt-md="column"
+>
+  <app-users-list class="half-page" [users]="users"></app-users-list>
+  <mat-divider [vertical]="true"></mat-divider>
+  <router-outlet></router-outlet>
+</section>

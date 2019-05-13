@@ -19,9 +19,13 @@ import { UserService } from 'src/app/core/services';
 })
 export class ProfileEditComponent implements OnInit {
   profileEdit: FormGroup;
+
   hidePassword = true;
+
   hideConfirmPassword = true;
+
   loading: boolean;
+
   errorMsg: string;
 
   constructor(
@@ -38,6 +42,7 @@ export class ProfileEditComponent implements OnInit {
         firstName: [profile.firstName, [Validators.required]],
         lastName: [profile.lastName, [Validators.required]],
         email: [profile.email, [Validators.required, Validators.email]],
+        phoneNumber: [profile.phoneNumber, [Validators.required]],
       });
     });
   }
@@ -57,11 +62,17 @@ export class ProfileEditComponent implements OnInit {
   get firstName(): AbstractControl {
     return this.profileEdit.get('firstName');
   }
+
   get lastName(): AbstractControl {
     return this.profileEdit.get('lastName');
   }
+
   get email(): AbstractControl {
     return this.profileEdit.get('email');
+  }
+
+  get phoneNumber(): AbstractControl {
+    return this.profileEdit.get('phoneNumber');
   }
 
   getErrorMessage(formControl: FormControl): string {
@@ -69,8 +80,6 @@ export class ProfileEditComponent implements OnInit {
       ? 'Вы должны ввести значение'
       : formControl.hasError('email')
       ? 'Вы должны ввести значение'
-      : formControl.hasError('mustMatch')
-      ? 'Пароли не совпадают'
       : formControl.hasError('minlength')
       ? `Значение должно содержать не менее ${
           formControl.errors.minlength.requiredLength
