@@ -14,7 +14,7 @@
     <button mat-button [routerLink]="['/profile', currentUserId]">
       <mat-icon>person</mat-icon>Профиль
     </button>
-    <button *ngIf="isAdministrator" mat-button routerLink="/admin">
+    <button *ngIf="isAdministrator" mat-button routerLink="/admin/users">
       <mat-icon>dvr</mat-icon>Aдминистратор
     </button>
     <button mat-button *ngIf="currentUserId" (click)="logout()">

@@ -1,3 +1,9 @@
-<p>
-  users works!
-</p>
+<section
+  class="main-content full-page-flex-wrapper"
+  fxLayout="row"
+  fxLayout.lt-md="column"
+>
+  <app-users-list class="half-page users-list" [users]="users" (select)="navigate($event)"></app-users-list>
+  <mat-divider [vertical]="true"></mat-divider>
+  <router-outlet></router-outlet>
+</section>

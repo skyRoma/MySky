@@ -1,10 +1,20 @@
 <mat-list>
-  <mat-list-item *ngFor="let user of users" [matMenuTriggerFor]="menu">
+  <mat-list-item
+    *ngFor="let user of users"
+    [matMenuTriggerFor]="menu"
+    [matMenuTriggerData]="{ user: user }"
+  >
     {{ getFullName(user) }}
     <mat-icon>arrow_right</mat-icon>
   </mat-list-item>
 </mat-list>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>Персональные данные</button>
-  <button mat-menu-item>Прыжки</button>
+<mat-menu #menu="matMenu" class="overlay-panel">
+  <ng-template matMenuContent let-user="user">
+    <button mat-menu-item (click)="onClick(user, buttonName.personalData)">
+      {{ buttonName.personalData }}
+    </button>
+    <button mat-menu-item (click)="onClick(user, buttonName.jumps)">
+      {{ buttonName.jumps }}
+    </button>
+  </ng-template>
 </mat-menu>

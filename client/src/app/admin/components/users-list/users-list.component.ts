@@ -1,23 +1,26 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from 'src/app/core/models';
+
+import { UsersListEmitValue, UsersListsButtonName } from './user-lists.types';
 
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss'],
 })
-export class UsersListComponent implements OnInit {
+export class UsersListComponent {
   @Input()
   users: User[];
 
-  constructor() {}
+  @Output() select: EventEmitter<UsersListEmitValue> = new EventEmitter();
 
-  ngOnInit(): void {
-    console.log(this.users);
-  }
+  buttonName = UsersListsButtonName;
 
   getFullName(user: User): string {
     return user.firstName + ' ' + user.lastName;
+  }
+
+  onClick(user: User, buttonName: UsersListsButtonName): void {
+    this.select.emit({ user, buttonName });
   }
 }

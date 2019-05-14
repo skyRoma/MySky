@@ -9,6 +9,7 @@ const router = express.Router();
 function findAll() {
   return userService.findAll({
     attributes: [
+      'id',
       'firstName',
       'lastName',
       'email',

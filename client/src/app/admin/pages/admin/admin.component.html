@@ -5,12 +5,4 @@
   </div>
 </mat-toolbar>
 
-<section
-  class="main-content full-page-flex-wrapper"
-  fxLayout="row"
-  fxLayout.lt-md="column"
->
-  <app-users-list class="half-page" [users]="users"></app-users-list>
-  <mat-divider [vertical]="true"></mat-divider>
-  <router-outlet></router-outlet>
-</section>
+<router-outlet></router-outlet>
