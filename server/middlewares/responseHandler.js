@@ -48,7 +48,7 @@ function handleSuccess(actionFn) {
           throw new NotFound();
         }
 
-        if (req.method === 'DELETE' || req.method === 'PUT') {
+        if (req.method === 'DELETE') {
           successStatusCode = httpCodes.NO_CONTENT;
           actionResult = {};
         }

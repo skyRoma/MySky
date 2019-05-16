@@ -48,7 +48,9 @@ function create(req) {
 }
 
 function update(req) {
-  return userService.update(req.params.id, req.body);
+  return userService
+    .update(req.params.id, req.body)
+    .then(() => findById(req));
 }
 
 function remove(req) {

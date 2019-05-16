@@ -5,3 +5,7 @@
   max-height: 75vh;
   overflow: auto;
 }
+
+::ng-deep .mat-list-base {
+  max-height: 75vh;
+}

@@ -30,7 +30,10 @@ const routes: Routes = [
           },
         ],
       },
-      { path: 'schedule', component: ScheduleComponent },
+      {
+        path: 'schedule',
+        component: ScheduleComponent,
+      },
     ],
   },
 ];

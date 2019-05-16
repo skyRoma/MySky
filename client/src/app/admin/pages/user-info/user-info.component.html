@@ -1,9 +1,14 @@
 <section class="user-info">
   <div>
     Основное:
-    <button mat-icon-button matTooltip="Редактировать" routerLink="edit">
-      <mat-icon>edit</mat-icon>
+  </div>
+  <div>
+    <button (click)="removeUser()" mat-icon-button matTooltip="Удалить">
+      <mat-icon>delete</mat-icon>
     </button>
+    <mat-slide-toggle (change)="onToggleChange($event)" matTooltip="Назначить администратором"
+      >Администратор</mat-slide-toggle
+    >
   </div>
   <div>
     <div class="user-info-title">Имя Фамилия</div>

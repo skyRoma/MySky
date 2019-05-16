@@ -16,6 +16,7 @@ import {
   MatPaginatorModule,
   MatProgressSpinnerModule,
   MatSelectModule,
+  MatSlideToggleModule,
   MatSnackBarModule,
   MatTableModule,
   MatTabsModule,
@@ -47,6 +48,7 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatSlideToggleModule,
   ],
   exports: [
     FlexLayoutModule,
@@ -69,6 +71,7 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatSlideToggleModule,
   ],
 })
 export class AppMaterialModule {}
