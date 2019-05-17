@@ -1,32 +1,15 @@
-::ng-deep button + .mat-slide-toggle {
-  height: auto;
-  margin-left: 15px;
+div.actions {
+  margin-top: 0px;
+  width: 263px;
+  display: flex;
+  justify-content: space-between;
 
-  &.mat-checked {
-    .mat-slide-toggle-thumb {
-      background-color: #87deec;
-    }
-
-    .mat-slide-toggle-bar {
-      background-color: rgb(192, 239, 245);
-    }
-
-    .mat-ripple-element {
-      background-color: #bde4fb;
-    }
+  .mat-form-field {
+    margin-top: 0px;
   }
 
-  .mat-slide-toggle-label {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    .mat-slide-toggle-content {
-      font-size: 16px;
-    }
+  button {
+    position: relative;
+    top: 13px;
   }
-}
-
-.user-info > div:nth-child(2) {
-  margin-top: 20px;
 }

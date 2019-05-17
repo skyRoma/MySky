@@ -8,6 +8,9 @@ import {
 import { User } from 'src/app/core/models';
 import { UserService } from 'src/app/core/services';
 
+import { USER_ROLES } from './user-info-config';
+import { UserRoleName } from './user-info.types';
+
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
@@ -21,6 +24,10 @@ import { UserService } from 'src/app/core/services';
 export class UserInfoComponent {
   user: User;
 
+  userRoleId: number;
+
+  userRoles = USER_ROLES;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -33,28 +40,27 @@ export class UserInfoComponent {
     });
   }
 
-  onToggleChange(event) {
-    console.log(event);
-  }
-
   getUser(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.route.parent.parent.data.subscribe(
       ({ users }: { users: User[] }) => {
         this.user = users.find(user => user.id === id);
+        this.userRoleId = this.userRoles.filter(role => {
+          return role.name === (this.user.role as UserRoleName);
+        })[0].id;
       }
     );
   }
 
-  removeUser() {
+  removeUser(): void {
     this.userService.deleteUser(this.user.id).subscribe((user: User) => {
       this.router.navigate(['../'], { relativeTo: this.route });
     });
   }
 
-  assignAdminRole() {
+  changeRole(roleId: number): void {
     this.userService
-      .updateUser(this.user.id, { roleId: 1 })
+      .updateUser(this.user.id, { roleId })
       .subscribe((user: User) => {
         this.user = user;
       });
