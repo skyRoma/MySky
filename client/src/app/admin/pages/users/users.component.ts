@@ -1,4 +1,9 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/core/models';
 
@@ -8,6 +13,10 @@ import { UsersListEmitValue } from '../../components/users-list/user-lists.types
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'vertical-offset-level-2',
+  },
 })
 export class UsersComponent implements OnInit {
   users: User[];

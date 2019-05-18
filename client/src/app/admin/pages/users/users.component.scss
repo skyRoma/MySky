@@ -1,11 +1,14 @@
 .users-list ::ng-deep {
   flex: 1;
-  margin-top: 175px;
   width: 240px;
-  max-height: 75vh;
+  max-height: 82vh;
+  overflow: auto;
+}
+
+::ng-deep .user-info {
   overflow: auto;
 }
 
 ::ng-deep .mat-list-base {
-  max-height: 75vh;
+  max-height: 82vh;
 }

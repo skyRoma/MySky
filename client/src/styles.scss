@@ -8,8 +8,26 @@ body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.full-page-flex-wrapper {
-  min-height: 100%;
+.vertical-offset-level-1 {
+  position: relative;
+  top: 65px;
+}
+
+.vertical-offset-level-2 {
+  position: relative;
+  top: 130px;
+}
+
+.full-page-wrapper {
+  height: 100vh;
+}
+
+.full-page-wrapper-level-1 {
+  height: 91vh;
+}
+
+.full-page-wrapper-level-2 {
+  height: 82vh;
 }
 
 .half-page {
@@ -17,4 +35,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.expanded-toolbar {
+  z-index: 1000;
+}
+
+@media (max-width: 960px) {
+  .full-page-wrapper {
+    &,
+    &-level-1,
+    &-level-2 {
+      height: auto;
+    }
+  }
 }

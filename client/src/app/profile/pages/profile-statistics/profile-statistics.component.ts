@@ -8,6 +8,9 @@ import { JumpPanelComponent } from '../../components/jump-panel/jump-panel.compo
   templateUrl: './profile-statistics.component.html',
   styleUrls: ['./profile-statistics.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'vertical-offset-level-1',
+  },
 })
 export class ProfileStatisticsComponent {
   @ViewChild('jumpPanelRef')

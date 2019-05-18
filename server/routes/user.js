@@ -22,12 +22,14 @@ function findAll() {
         attributes: [],
       },
     ],
+    order: [['firstName', 'ASC'], ['lastName', 'ASC']],
   });
 }
 
 function findById(req) {
   return userService.findById(req.params.id, {
     attributes: [
+      'id',
       'firstName',
       'lastName',
       'email',

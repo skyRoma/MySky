@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { User } from 'src/app/core/models';
 
 import { UsersListEmitValue, UsersListsButtonName } from './user-lists.types';
@@ -7,6 +13,7 @@ import { UsersListEmitValue, UsersListsButtonName } from './user-lists.types';
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersListComponent {
   @Input()
