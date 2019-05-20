@@ -12,47 +12,7 @@ import { News, User } from 'src/app/core/models';
   },
 })
 export class NewsComponent implements OnInit {
-  news: News[] = [
-    {
-      author: {
-        firstName: 'Ivan',
-        lastName: 'Ivanov',
-        id: '223',
-        role: 'Администратор',
-        email: 'dfd@dlfdf',
-      },
-      content:
-        'dffffffffffff dfffffffffffff dfffffffffffff dfffffffffffff dfffffffffffff dfdffffffffffff df dffffffffffff df dffffffffffff df dffffffffffff df',
-      createdAt: new Date(),
-      id: 3,
-    },
-    {
-      author: {
-        firstName: 'Ivan',
-        lastName: 'Ivanov',
-        id: '223',
-        role: 'Администратор',
-        email: 'dfd@dlfdf',
-      },
-      content:
-        'dffffffffffff dfdffffffffffff df dffffffffffff df dffffffffffff df dffffffffffff df',
-      createdAt: new Date(),
-      id: 3,
-    },
-    {
-      author: {
-        firstName: 'Ivan',
-        lastName: 'Ivanov',
-        id: '223',
-        role: 'Администратор',
-        email: 'dfd@dlfdf',
-      },
-      content:
-        'dffffffffffff dfdffffffffffff df dffffffffffff df dffffffffffff df dffffffffffff df',
-      createdAt: new Date(),
-      id: 3,
-    },
-  ];
+  news: News[];
 
   constructor(private route: ActivatedRoute) {}
 
@@ -62,7 +22,7 @@ export class NewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe((data: { news: News[] }) => {
-      console.log(data.news);
+      this.news = data.news;
     });
   }
 }

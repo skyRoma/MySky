@@ -8,38 +8,22 @@ const router = express.Router();
 
 function findAll() {
   return newsService.findAll({
-    attributes: [
-      'id',
-      'content',
-      'createdAt',
-      'User.firstName',
-      // 'User.Role.name',
-
-      // [model.sequelize.col('User.firstName'), 'user'],
-      [model.sequelize.col('User.Role.name'), 'role'],
-    ],
+    attributes: ['id', 'content', 'createdAt'],
     include: [
       {
         model: model.User,
-        attributes: [
-          // 'id',
-          'firstName',
-          // 'lastName',
-          // 'email',
-          // 'phoneNumber',
-          // [model.sequelize.col('Role.id'), 'role'],
-        ],
+        as: 'author',
+        attributes: ['id', 'firstName', 'lastName', 'email', 'phoneNumber'],
         include: [
           {
             model: model.Role,
+            as: 'role',
             required: false,
-            attributes: ['name'],
+            attributes: ['id', 'name'],
           },
         ],
       },
     ],
-
-    // raw: false,
   });
 }
 

@@ -10,7 +10,7 @@ const routes: Routes = [
     component: HomeComponent,
     resolve: {
       weather: WeatherResolverService,
-      // news: NewsResolverService,
+      news: NewsResolverService,
     },
   },
 ];

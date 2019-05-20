@@ -8,18 +8,12 @@ const router = express.Router();
 
 function findAll() {
   return userService.findAll({
-    attributes: [
-      'id',
-      'firstName',
-      'lastName',
-      'email',
-      'phoneNumber',
-      [model.sequelize.col('Role.name'), 'role'],
-    ],
+    attributes: ['id', 'firstName', 'lastName', 'email', 'phoneNumber'],
     include: [
       {
         model: model.Role,
-        attributes: [],
+        as: 'role',
+        attributes: ['id', 'name'],
       },
     ],
     order: [['firstName', 'ASC'], ['lastName', 'ASC']],
@@ -28,18 +22,12 @@ function findAll() {
 
 function findById(req) {
   return userService.findById(req.params.id, {
-    attributes: [
-      'id',
-      'firstName',
-      'lastName',
-      'email',
-      'phoneNumber',
-      [model.sequelize.col('Role.name'), 'role'],
-    ],
+    attributes: ['id', 'firstName', 'lastName', 'email', 'phoneNumber'],
     include: [
       {
         model: model.Role,
-        attributes: [],
+        as: 'role',
+        attributes: ['id', 'name'],
       },
     ],
   });

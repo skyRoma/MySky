@@ -40,6 +40,7 @@ module.exports = (sequelize, DataTypes) => {
   News.associate = function(models) {
     News.belongsTo(models.User, {
       foreignKey: 'authorId',
+      as: 'author',
     });
   };
   return News;

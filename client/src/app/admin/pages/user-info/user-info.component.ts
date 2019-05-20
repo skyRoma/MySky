@@ -58,7 +58,7 @@ export class UserInfoComponent {
         ({ users }: { users: User[] }) => {
           this.user = users.find(user => user.id === id);
           this.userRoleId = this.userRoles.filter(role => {
-            return role.name === (this.user.role as UserRoleName);
+            return role.name === (this.user.role.name as UserRoleName);
           })[0].id;
           this.cdr.detectChanges();
         }

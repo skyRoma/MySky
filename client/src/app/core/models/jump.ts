@@ -1,6 +1,6 @@
 export class Jump {
   constructor(
-    readonly index: number,
+    readonly id: number,
     readonly date: Date,
     readonly exercise: ExerciseType,
     readonly parachute: string,
