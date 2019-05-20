@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
 
   News.associate = function(models) {
     News.belongsTo(models.User, {
-      foreignKey: 'userId',
+      foreignKey: 'authorId',
     });
   };
   return News;

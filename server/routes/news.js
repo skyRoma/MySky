@@ -7,20 +7,39 @@ const { handleSuccess } = require('../middlewares/responseHandler');
 const router = express.Router();
 
 function findAll() {
-  return newsService.find({
+  return newsService.findAll({
     attributes: [
       'id',
       'content',
       'createdAt',
-      [model.sequelize.col('User.firstName'), 'firstName'],
-      [model.sequelize.col('User.lastName'), 'lastName'],
+      'User.firstName',
+      // 'User.Role.name',
+
+      // [model.sequelize.col('User.firstName'), 'user'],
+      [model.sequelize.col('User.Role.name'), 'role'],
     ],
     include: [
       {
         model: model.User,
-        attributes: [],
+        attributes: [
+          // 'id',
+          'firstName',
+          // 'lastName',
+          // 'email',
+          // 'phoneNumber',
+          // [model.sequelize.col('Role.id'), 'role'],
+        ],
+        include: [
+          {
+            model: model.Role,
+            required: false,
+            attributes: ['name'],
+          },
+        ],
       },
     ],
+
+    // raw: false,
   });
 }
 

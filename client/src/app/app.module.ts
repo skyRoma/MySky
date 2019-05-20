@@ -1,5 +1,7 @@
+import { registerLocaleData } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import localeRu from '@angular/common/locales/ru';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -8,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptor, TokenInterceptor } from './core/interceptors';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+registerLocaleData(localeRu);
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent],
@@ -29,6 +33,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
       useClass: ErrorInterceptor,
       multi: true,
     },
+    { provide: LOCALE_ID, useValue: 'ru-RU' },
   ],
   bootstrap: [AppComponent],
 })

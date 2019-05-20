@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { MatExpansionPanel } from '@angular/material';
-import { Jump } from 'src/app/core/models/jump';
+import { Jump } from 'src/app/core/models';
 
 import { EXERCISE_OPTIONS } from './jump-panel-config';
 

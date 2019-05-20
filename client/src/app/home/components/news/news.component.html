@@ -1,3 +1,64 @@
-<p>
-  news works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Последние новости</mat-card-title>
+    <mat-divider></mat-divider>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let newsItem of news">
+        <h4 mat-line>{{ newsItem.content }}</h4>
+        <div mat-line class="meta-info">
+          <span> {{ getFullName(newsItem.author) }} </span>
+          <span>{{ newsItem.createdAt | date }}</span>
+          <div class="actions">
+            <button mat-icon-button matTooltip="Редактировать">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Удалить">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <!-- <mat-form-field mat-line>
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="2"
+            cdkAutosizeMaxRows="6"
+            >{{ newsItem.content }}
+            </textarea
+          >
+        </mat-form-field>
+        <div class="actions" mat-line>
+          <button mat-icon-button matTooltip="Сохранить">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Отменить">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </div> -->
+      </mat-list-item>
+    </mat-list>
+    <div class="new-item">
+    <mat-form-field>
+        <mat-label>Новая запись</mat-label>
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="2"
+          cdkAutosizeMaxRows="6"
+        ></textarea>
+      </mat-form-field>
+
+      <div class="actions" mat-line>
+        <button mat-icon-button matTooltip="Сохранить">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Отменить">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

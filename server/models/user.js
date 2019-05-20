@@ -71,6 +71,9 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Jump, {
       foreignKey: 'userId',
     });
+    User.hasMany(models.News, {
+      foreignKey: 'authorId',
+    });
     User.belongsTo(models.Role, {
       foreignKey: 'roleId',
     });

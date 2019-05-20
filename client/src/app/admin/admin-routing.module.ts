@@ -31,6 +31,10 @@ const routes: Routes = [
         ],
       },
       {
+        path: '',
+        redirectTo: 'users',
+      },
+      {
         path: 'schedule',
         component: ScheduleComponent,
       },

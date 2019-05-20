@@ -1,8 +1,8 @@
+const News = require('../models').News;
 const Repository = require('../repository/repository');
-const User = require('../models').User;
 
 class NewsService extends Repository {}
 
-const newsService = new NewsService(User);
+const newsService = new NewsService(News);
 
 module.exports = newsService;

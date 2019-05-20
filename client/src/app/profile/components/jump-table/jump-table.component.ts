@@ -7,7 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { Jump } from 'src/app/core/models/jump';
+import { Jump } from 'src/app/core/models';
 
 import { COLUMNS, DISPLAYED_COLUMNS, MOCK_DATA } from './jump-table-config';
 
