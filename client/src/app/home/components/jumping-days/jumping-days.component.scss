@@ -1,0 +1,25 @@
+.mat-line.meta-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: gray;
+}
+
+::ng-deep .mat-list-base {
+  max-height: 315px;
+  overflow: auto;
+
+  .mat-list-item {
+    padding: 10px 0 10px;
+
+    div.mat-line {
+      overflow: initial;
+    }
+  }
+}
+
+.mat-raised-button {
+  position: relative;
+  bottom: 12px;
+}

@@ -1,5 +1,6 @@
 .app-weather,
-.app-news {
+.app-news,
+.app-jumping-days {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -13,7 +14,7 @@
   min-width: 300px;
 
   &:last-child {
-      margin-bottom: 20px;
+    margin-bottom: 20px;
   }
 
   .mat-card-header {

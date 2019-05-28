@@ -79,6 +79,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'roleId',
       as: 'role',
     });
+    User.belongsToMany(models.JumpingDay, {
+      through: 'Schedule',
+      foreignKey: 'userId',
+    });
   };
   return User;
 };

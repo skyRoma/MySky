@@ -31,12 +31,13 @@ const routes: Routes = [
         ],
       },
       {
-        path: '',
-        redirectTo: 'users',
-      },
-      {
         path: 'schedule',
         component: ScheduleComponent,
+      },
+      {
+        path: '',
+        redirectTo: 'users',
+        pathMatch: 'full',
       },
     ],
   },
