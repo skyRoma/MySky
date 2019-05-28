@@ -8,10 +8,13 @@
     <mat-card>
       <mat-tab-group>
         <mat-tab label="Информация о прыжках ">
-          <app-jump-table (edit)="onEdit($event)"></app-jump-table>
+          <app-jump-table
+            [jumps]="jumps"
+            (edit)="onEdit($event)"
+          ></app-jump-table>
         </mat-tab>
         <mat-tab label="Статистика">
-          <app-jump-chart></app-jump-chart>
+          <app-jump-chart [jumps]="jumps"></app-jump-chart>
         </mat-tab>
       </mat-tab-group>
     </mat-card>

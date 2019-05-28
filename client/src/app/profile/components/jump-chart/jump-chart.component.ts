@@ -1,29 +1,31 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { Jump } from 'src/app/core/models';
 
 @Component({
   selector: 'app-jump-chart',
   templateUrl: './jump-chart.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class JumpChartComponent implements OnInit {
+export class JumpChartComponent implements OnChanges {
+  @Input()
+  jumps: Jump[];
+
   lineChartData: ChartDataSets[] = [
     {
-      data: [8, 1, 14, 2, 16, 5, 10],
+      data: [],
       label: 'Отклонение от цели',
     },
   ];
 
-  lineChartLabels: Label[] = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-  ];
+  lineChartLabels: Label[] = [];
 
   lineChartOptions: ChartOptions = {
     responsive: true,
@@ -45,7 +47,10 @@ export class JumpChartComponent implements OnInit {
 
   lineChartType = 'line';
 
-  constructor() {}
-
-  ngOnInit() {}
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.jumps) {
+      this.lineChartData[0].data = this.jumps.map(jump => jump.result);
+      this.lineChartLabels = this.jumps.map((jump, i) => String(i));
+    }
+  }
 }

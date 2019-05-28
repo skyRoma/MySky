@@ -31,7 +31,7 @@ export class JumpPanelComponent {
     date: ['', [Validators.required]],
     exercise: ['', [Validators.required]],
     parachute: ['', [Validators.required]],
-    aircrafType: ['', [Validators.required]],
+    aircraft: ['', [Validators.required]],
     height: ['', [Validators.required]],
     freeFallTime: ['', [Validators.required]],
     result: ['', [Validators.required]],
@@ -45,9 +45,9 @@ export class JumpPanelComponent {
 
   constructor(
     private fb: FormBuilder,
-    private _breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver
   ) {
-    _breakpointObserver
+    breakpointObserver
       .observe('(min-width: 1750px)')
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
@@ -97,6 +97,7 @@ export class JumpPanelComponent {
   open(jump: Jump): void {
     this.setFormValues(jump);
     this.matPanel.open();
+    this.isJumpExist = true;
     this.jumpFormRef.nativeElement.scrollIntoView();
   }
 
@@ -108,7 +109,9 @@ export class JumpPanelComponent {
 
   private setFormValues(jump: Jump): void {
     Object.keys(this.jumpForm.controls).forEach(formControlName => {
-      this.jumpForm.controls[formControlName].setValue(jump[formControlName]);
+      this.jumpForm.controls[formControlName].setValue(
+        this.getFormControlValue(jump, formControlName)
+      );
     });
     this.setDropDownValue(jump);
   }
@@ -116,10 +119,16 @@ export class JumpPanelComponent {
   private setDropDownValue(jump: Jump): void {
     let exerciseValue: string;
     this.exerciseOprions.forEach(option => {
-      if (option.name === jump.exercise) {
+      if (option.name === jump.exercise.name) {
         exerciseValue = option.value;
       }
     });
     this.jumpForm.controls.exercise.setValue(exerciseValue);
+  }
+
+  private getFormControlValue(jump: Jump, formControlName: string): any {
+    return jump[formControlName].id
+      ? jump[formControlName].name
+      : jump[formControlName];
   }
 }

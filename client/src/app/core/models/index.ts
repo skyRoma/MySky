@@ -5,3 +5,6 @@ export * from './weather';
 export * from './jump';
 export * from './news';
 export * from './role';
+export * from './exercise';
+export * from './aircraft';
+export * from './parachute';

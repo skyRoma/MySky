@@ -1,4 +1,4 @@
-import { Role } from './role';
+import { Jump, Role } from '.';
 
 export class User {
   constructor(
@@ -7,6 +7,7 @@ export class User {
     readonly lastName: string,
     readonly email: string,
     readonly role: Role,
+    readonly jumps: Jump[],
     readonly phoneNumber?: string
   ) {}
 }

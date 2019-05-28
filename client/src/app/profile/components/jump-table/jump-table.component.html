@@ -6,7 +6,12 @@
       *ngFor="let column of columns"
     >
       <th mat-header-cell *matHeaderCellDef>{{ column.title }}</th>
-      <td mat-cell *matCellDef="let row">{{ row[column.name] }}</td>
+      <td mat-cell *matCellDef="let row">
+        <ng-container *ngIf="isDateCell(column.name); else default">
+          {{ row[column.name] | date }}
+        </ng-container>
+        <ng-template #default>{{ getCellValue(row,column.name)}}</ng-template>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="edit">

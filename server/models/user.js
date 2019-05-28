@@ -70,6 +70,7 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models) {
     User.hasMany(models.Jump, {
       foreignKey: 'userId',
+      as: 'jumps',
     });
     User.hasMany(models.News, {
       foreignKey: 'authorId',

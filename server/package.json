@@ -4,7 +4,8 @@
   "author": "Roman Sluka",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "update-db": "sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all && yarn start"
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",

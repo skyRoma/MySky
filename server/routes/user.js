@@ -29,6 +29,35 @@ function findById(req) {
         as: 'role',
         attributes: ['id', 'name'],
       },
+      {
+        model: model.Jump,
+        as: 'jumps',
+        attributes: [
+          'id',
+          'date',
+          'height',
+          'freeFallTime',
+          'result',
+          'createdAt',
+        ],
+        include: [
+          {
+            model: model.Exercise,
+            as: 'exercise',
+            attributes: ['id', 'name'],
+          },
+          {
+            model: model.Parachute,
+            as: 'parachute',
+            attributes: ['id', 'name'],
+          },
+          {
+            model: model.Aircraft,
+            as: 'aircraft',
+            attributes: ['id', 'name'],
+          },
+        ],
+      },
     ],
   });
 }
