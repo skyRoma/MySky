@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppMaterialModule } from '../app-material/app-material.module';
 
@@ -16,6 +17,11 @@ import { HomeComponent } from './pages/home/home.component';
     NewsComponent,
     JumpingDaysComponent,
   ],
-  imports: [CommonModule, HomeRoutingModule, AppMaterialModule],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    HomeRoutingModule,
+    AppMaterialModule,
+  ],
 })
 export class HomeModule {}

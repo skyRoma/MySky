@@ -14,15 +14,15 @@ export class NewsService {
     return this.http.get<News[]>(`http://localhost:3000/news`);
   }
 
-  createNews(data: News): Observable<News> {
-    return this.http.post<News>(`http://localhost:3000/news`, data);
+  createNews(data: any): Observable<News> {
+    return this.http.post<any>(`http://localhost:3000/news`, data);
   }
 
-  updateNews(id: string, data: News): Observable<News> {
+  updateNews(id: number, data: News): Observable<News> {
     return this.http.put<News>(`http://localhost:3000/news/${id}`, data);
   }
 
-  deleteNews(id: string): Observable<News> {
-    return this.http.delete<News>(`http://localhost:3000/news/${id}`);
+  deleteNews(id: number): Observable<News[]> {
+    return this.http.delete<News[]>(`http://localhost:3000/news/${id}`);
   }
 }

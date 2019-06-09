@@ -11,51 +11,49 @@
           <span> {{ getFullName(newsItem.author) }} </span>
           <span>{{ newsItem.createdAt | date }}</span>
           <div class="actions">
-            <button mat-icon-button matTooltip="Редактировать">
+            <button
+              mat-icon-button
+              matTooltip="Редактировать"
+            >
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button matTooltip="Удалить">
+            <button
+              mat-icon-button
+              matTooltip="Удалить"
+              (click)="deleteNews(newsItem.id)"
+            >
               <mat-icon>delete</mat-icon>
             </button>
           </div>
         </div>
-
-        <!-- <mat-form-field mat-line>
-          <textarea
-            matInput
-            cdkTextareaAutosize
-            cdkAutosizeMinRows="2"
-            cdkAutosizeMaxRows="6"
-            >{{ newsItem.content }}
-            </textarea
-          >
-        </mat-form-field>
-        <div class="actions" mat-line>
-          <button mat-icon-button matTooltip="Сохранить">
-            <mat-icon>save</mat-icon>
-          </button>
-          <button mat-icon-button matTooltip="Отменить">
-            <mat-icon>cancel</mat-icon>
-          </button>
-        </div> -->
       </mat-list-item>
     </mat-list>
-    <div class="new-item">
-    <mat-form-field>
+
+    <div class="new-item" *ngIf="isAdministrator">
+      <mat-form-field>
         <mat-label>Новая запись</mat-label>
         <textarea
+          #textArea
+          [formControl]="addNewsFormControl"
           matInput
           cdkTextareaAutosize
           cdkAutosizeMinRows="2"
           cdkAutosizeMaxRows="6"
         ></textarea>
       </mat-form-field>
-
       <div class="actions" mat-line>
-        <button mat-icon-button matTooltip="Сохранить">
+        <button
+          mat-icon-button
+          matTooltip="Сохранить"
+          (click)="addNews(textArea.value)"
+        >
           <mat-icon>save</mat-icon>
         </button>
-        <button mat-icon-button matTooltip="Отменить">
+        <button
+          mat-icon-button
+          matTooltip="Отменить"
+          (click)="addNewsFormControl.reset()"
+        >
           <mat-icon>cancel</mat-icon>
         </button>
       </div>

@@ -14,6 +14,8 @@ module.exports = (sequelize, DataTypes) => {
         model: 'Users',
         key: 'id',
       },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
       type: DataTypes.UUID,
     },
     jumpingDayId: {

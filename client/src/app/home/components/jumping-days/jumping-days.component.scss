@@ -6,7 +6,7 @@
   color: gray;
 }
 
-::ng-deep .mat-list-base {
+:host ::ng-deep .mat-list-base {
   max-height: 315px;
   overflow: auto;
 
