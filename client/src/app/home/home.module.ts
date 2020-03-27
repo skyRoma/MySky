@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppMaterialModule } from '../app-material/app-material.module';
 
+import { BookJumpComponent } from './components/book-jump/book-jump.component';
 import { JumpingDaysComponent } from './components/jumping-days/jumping-days.component';
 import { NewsComponent } from './components/news/news.component';
 import { WeatherComponent } from './components/weather/weather.component';
@@ -16,6 +17,7 @@ import { HomeComponent } from './pages/home/home.component';
     WeatherComponent,
     NewsComponent,
     JumpingDaysComponent,
+    BookJumpComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -23,5 +25,6 @@ import { HomeComponent } from './pages/home/home.component';
     HomeRoutingModule,
     AppMaterialModule,
   ],
+  entryComponents: [BookJumpComponent],
 })
 export class HomeModule {}

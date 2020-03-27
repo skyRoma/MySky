@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
-
-import { User } from '../core/models';
-import { UserService } from '../core/services';
+import { User } from 'src/app/core/models';
+import { UserService } from 'src/app/core/services';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AdminResolverService implements Resolve<User[]> {
+export class UserResolverService implements Resolve<User[]> {
   constructor(private userService: UserService) {}
 
   resolve(): Observable<User[]> | Observable<never> {

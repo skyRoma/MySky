@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   JumpingDay.associate = function(models) {
     JumpingDay.belongsToMany(models.User, {
+      as: 'users',
       through: 'Schedule',
       foreignKey: 'jumpingDayId',
     });

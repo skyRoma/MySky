@@ -9,7 +9,7 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Jump } from 'src/app/core/models';
 
 import { COLUMNS, DISPLAYED_COLUMNS } from './jump-table-config';
@@ -33,6 +33,7 @@ export class JumpTableComponent implements OnChanges, AfterViewInit {
   dataSource = new MatTableDataSource<Jump>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!changes.jumps.firstChange) {
@@ -56,8 +57,13 @@ export class JumpTableComponent implements OnChanges, AfterViewInit {
     this.edit.emit(row);
   }
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   private onJumpsChange(): void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     this.dataSource.data = this.jumps;
   }
 }

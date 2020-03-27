@@ -28,7 +28,7 @@ export class ProfileStatisticsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe((data: { profile: User }) => {
-      this.jumps = data.profile.jumps.map(jump => jump);
+      this.jumps = data.profile.jumps;
     });
   }
 

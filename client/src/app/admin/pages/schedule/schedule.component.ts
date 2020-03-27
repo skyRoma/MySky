@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
+
+import { AddJumpingDayComponent } from '../../components/add-jumping-day/add-jumping-day.component';
 
 @Component({
   selector: 'app-schedule',
@@ -9,27 +13,24 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     class: 'app-schedule vertical-offset-level-2',
   },
 })
-export class ScheduleComponent {
-  jumpingDays = [
-    {
-      date: new Date(),
-      size: 0,
-      users: new Array(30).fill({ firstName: 'Иван', lastName: 'Иванов' }),
-    },
-    {
-      date: new Date(),
-      size: 0,
-      users: new Array(30).fill({ firstName: 'Иван', lastName: 'Иванов' }),
-    },
-    {
-      date: new Date(),
-      size: 14,
-      users: new Array(30).fill({ firstName: 'Иван', lastName: 'Иванов' }),
-    },
-    {
-      date: new Date(),
-      size: 27,
-      users: new Array(30).fill({ firstName: 'Иван', lastName: 'Иванов' }),
-    },
-  ];
+export class ScheduleComponent implements OnInit {
+  jumpingDays = [];
+
+  constructor(private route: ActivatedRoute, private dialog: MatDialog) {}
+
+  ngOnInit(): void {
+    this.route.data.subscribe((data: { jumpingDays: any[] }) => {
+      this.jumpingDays = data.jumpingDays.map(day => {
+        return {
+          date: day.date,
+          size: day.size - day.users.length,
+          users: day.users,
+        };
+      });
+    });
+  }
+
+  addDay() {
+    this.dialog.open(AddJumpingDayComponent);
+  }
 }
