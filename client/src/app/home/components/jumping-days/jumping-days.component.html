@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Записаться на прыжки</mat-card-title>
+    <mat-divider></mat-divider>
+    <div class="schedule-item"></div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let day of jumpingDays">
+        <h4 mat-line>{{ day.date | date }}</h4>
+        <div mat-line class="meta-info">
+          <span> Осталось мест: {{ day.size }} </span>
+          <button
+            color="primary"
+            [disabled]="day.size === 0"
+            mat-raised-button
+            (click)="bookJump()"
+          >
+            Записаться
+          </button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

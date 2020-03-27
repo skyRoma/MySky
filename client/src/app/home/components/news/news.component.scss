@@ -1,0 +1,41 @@
+.mat-line.meta-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: gray;
+}
+
+.mat-list-base {
+  max-height: 315px;
+  overflow: auto;
+
+  .mat-list-item {
+    padding: 10px 0 10px;
+  }
+}
+
+.actions {
+  width: 82px;
+  display: flex;
+  justify-content: space-between;
+  color: gray;
+}
+
+.new-item {
+  padding: 10px;
+}
+
+.mat-form-field {
+  width: 100%;
+
+  & + .actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.mat-icon-button:hover {
+  color: black;
+}

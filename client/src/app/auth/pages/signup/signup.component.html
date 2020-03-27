@@ -1,0 +1,96 @@
+<section class="form-wrapper">
+  <h1>Зарегистрироваться в MySky</h1>
+
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" fxLayout="column">
+    <mat-form-field appearance="outline">
+      <mat-label>Имя</mat-label>
+      <input matInput formControlName="firstName" required />
+      <mat-icon matSuffix>account_circle</mat-icon>
+      <mat-error *ngIf="firstName.invalid">{{
+        getErrorMessage(firstName)
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Фамилия</mat-label>
+      <input matInput formControlName="lastName" required />
+      <mat-icon matSuffix>account_circle</mat-icon>
+      <mat-error *ngIf="lastName.invalid">{{
+        getErrorMessage(lastName)
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Адрес электронной почты</mat-label>
+      <input matInput formControlName="email" required />
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error *ngIf="email.invalid">{{
+        getErrorMessage(email)
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Пароль</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        required
+        [type]="hidePassword ? 'password' : 'text'"
+      />
+      <mat-error *ngIf="password.invalid">{{
+        getErrorMessage(password)
+      }}</mat-error>
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hidePassword = !hidePassword"
+      >
+        <mat-icon>{{
+          hidePassword ? 'visibility_off' : 'visibility'
+        }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Повторите пароль</mat-label>
+      <input
+        formControlName="confirmPassword"
+        matInput
+        required
+        [type]="hideConfirmPassword ? 'password' : 'text'"
+      />
+      <mat-error *ngIf="confirmPassword.invalid">{{
+        getErrorMessage(confirmPassword)
+      }}</mat-error>
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hideConfirmPassword = !hideConfirmPassword"
+      >
+        <mat-icon>{{
+          hidePassword ? 'visibility_off' : 'visibility'
+        }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div class="submit">
+      <button
+        color="primary"
+        mat-flat-button
+        type="submit"
+        [disabled]="!signupForm.valid"
+      >
+        Зарегистрироваться
+      </button>
+      <mat-spinner *ngIf="loading" diameter="33"></mat-spinner>
+    </div>
+
+    <p *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</p>
+  </form>
+  <div>
+    <span class="question">Уже зарегистрированы?</span>
+    <button mat-button [routerLink]="['/auth/login']">Войти</button>
+  </div>
+</section>

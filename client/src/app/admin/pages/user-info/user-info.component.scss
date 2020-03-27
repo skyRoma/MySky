@@ -1,0 +1,15 @@
+div.actions {
+  margin-top: 0px;
+  width: 263px;
+  display: flex;
+  justify-content: space-between;
+
+  .mat-form-field {
+    margin-top: 0px;
+  }
+
+  button {
+    position: relative;
+    top: 13px;
+  }
+}

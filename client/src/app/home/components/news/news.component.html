@@ -1,0 +1,62 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Последние новости</mat-card-title>
+    <mat-divider></mat-divider>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let newsItem of news">
+        <h4 mat-line>{{ newsItem.content }}</h4>
+        <div mat-line class="meta-info">
+          <span> {{ getFullName(newsItem.author) }} </span>
+          <span>{{ newsItem.createdAt | date }}</span>
+          <div class="actions">
+            <button
+              mat-icon-button
+              matTooltip="Редактировать"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              matTooltip="Удалить"
+              (click)="deleteNews(newsItem.id)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+
+    <div class="new-item" *ngIf="isAdministrator">
+      <mat-form-field>
+        <mat-label>Новая запись</mat-label>
+        <textarea
+          #textArea
+          [formControl]="addNewsFormControl"
+          matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="2"
+          cdkAutosizeMaxRows="6"
+        ></textarea>
+      </mat-form-field>
+      <div class="actions" mat-line>
+        <button
+          mat-icon-button
+          matTooltip="Сохранить"
+          (click)="addNews(textArea.value)"
+        >
+          <mat-icon>save</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          matTooltip="Отменить"
+          (click)="addNewsFormControl.reset()"
+        >
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

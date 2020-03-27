@@ -1,0 +1,48 @@
+.mat-card {
+  .mat-list-item {
+    &:first-child {
+      .mat-list-icon {
+        background-position: -154px -2px;
+        background-size: 232px;
+      }
+    }
+    &:nth-child(2) {
+      .mat-list-icon {
+        background-position: 17px -90px;
+        background-size: 230px;
+      }
+    }
+    &:nth-child(3) {
+      .mat-list-icon {
+        background-position: -1px 0px;
+        background-size: 218px;
+      }
+    }
+    &:nth-child(4) {
+      .mat-list-icon {
+        background-position: -84px -2px;
+        background-size: 232px;
+      }
+    }
+
+    .mat-list-icon {
+      border-radius: 0;
+      background-image: url('/assets/jump-types-sprite.png');
+      width: 75px;
+      height: 75px;
+      background-repeat: no-repeat;
+    }
+
+    &.disabled-item {
+      color: #cccccc;
+
+      .mat-list-icon {
+        opacity: 0.3;
+      }
+    }
+  }
+}
+
+.mat-card-avatar {
+  margin-bottom: 15px;
+}

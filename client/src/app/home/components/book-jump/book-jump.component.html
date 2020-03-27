@@ -1,0 +1,21 @@
+<div>
+  <form [formGroup]="jumpForm">
+    <section>
+      <div fxLayout="column">
+        <mat-form-field>
+          <mat-label>Упражнение</mat-label>
+          <mat-select required formControlName="exercise">
+            <mat-option
+              *ngFor="let option of exerciseOprions"
+              [value]="option.value"
+              >{{ option.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </section>
+    <button mat-dialog-close color="primary" mat-flat-button>
+      Подтвердить
+    </button>
+  </form>
+</div>

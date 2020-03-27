@@ -1,0 +1,21 @@
+.statistics ::ng-deep {
+  background-color: #84edff1c;
+  flex: 2;
+  flex-direction: column;
+  justify-content: initial;
+  overflow-y: scroll;
+
+  .mat-card {
+    margin: 55px 0 35px;
+    width: 80%;
+    padding: 0;
+  }
+
+  .mat-tab-body-wrapper {
+    height: 370px;
+  }
+
+  .jump-panel{
+    margin-bottom: 20px;
+  }
+}

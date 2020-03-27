@@ -1,0 +1,27 @@
+.table-wrapper {
+  height: 300px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 703px;
+}
+
+.table-filter {
+  position: absolute;
+  bottom: 0px;
+  left: 20px;
+}
+
+.mat-paginator {
+  margin-top: 10px;
+}
+
+td {
+  width: 1%;
+}
+
+.cdk-column-date {
+  width: 200px;
+}

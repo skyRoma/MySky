@@ -1,0 +1,29 @@
+<div>
+  <form [formGroup]="jumpForm">
+    <section>
+      <div fxLayout="column">
+        <mat-form-field>
+          <input
+          matInput
+          type="number"
+          formControlName="exercise"
+          placeholder="Количество мест"
+          required
+        />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="aircraft"
+            placeholder="Воздушное судно"
+            required
+          />
+        </mat-form-field>
+      </div>
+    </section>
+    <button mat-dialog-close color="primary" mat-flat-button>
+      Подтвердить
+    </button>
+  </form>
+</div>

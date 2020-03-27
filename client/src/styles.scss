@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~normalize.css/normalize.css';
+
+html,
+body {
+  height: 100%;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.vertical-offset-level-1 {
+  position: relative;
+  top: 65px;
+}
+
+.vertical-offset-level-2 {
+  position: relative;
+  top: 130px;
+}
+
+.full-page-wrapper {
+  height: 100vh;
+}
+
+.full-page-wrapper-level-1 {
+  height: 91vh;
+}
+
+.full-page-wrapper-level-2 {
+  height: 82vh;
+}
+
+.half-page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expanded-toolbar {
+  z-index: 1000;
+}
+
+@media (max-width: 960px) {
+  .full-page-wrapper {
+    &,
+    &-level-1,
+    &-level-2 {
+      height: auto;
+    }
+  }
+}

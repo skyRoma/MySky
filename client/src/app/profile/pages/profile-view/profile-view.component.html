@@ -1,0 +1,30 @@
+<section class="user-info">
+  <div>
+    Основное:
+    <button mat-icon-button matTooltip="Редактировать" routerLink="edit">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  <div>
+    <div class="user-info-title">Имя Фамилия</div>
+    <div class="user-info-data">
+      {{ profile.firstName + ' ' + profile.lastName }}
+    </div>
+  </div>
+  <div>
+    <div class="user-info-title">Почта</div>
+    <div class="user-info-data">{{ profile.email }}</div>
+  </div>
+  <div>
+    <div class="user-info-title">Мобильный телефон</div>
+    <div class="user-info-data">{{ profile.phoneNumber }}</div>
+  </div>
+  <div>
+    <div class="user-info-title">Прыжков</div>
+    <div class="user-info-data">265</div>
+  </div>
+  <div>
+    <div class="user-info-title">Роль</div>
+    <div class="user-info-data">{{ profile.role.name }}</div>
+  </div>
+</section>
