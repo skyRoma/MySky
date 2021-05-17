@@ -50,7 +50,12 @@ router.post('/signin', function(req, res) {
       where: {
         email: req.body.email,
       },
-      include: [model.Role],
+      include: [
+        {
+          model: model.Role,
+          as: 'role',
+        },
+      ],
     })
     .then(user => {
       if (!user) {
@@ -64,10 +69,10 @@ router.post('/signin', function(req, res) {
           const payload = {
             sub: 'auth',
             id: user.id,
-            role: user.Role.name,
+            role: user.role.name,
           };
           const options = {
-            expiresIn: 750,
+            expiresIn: 8750,
           };
           const token = jwt.sign(payload, config.secret, options);
           res.status(httpCodes.OK).send({ success: true, msg: token });

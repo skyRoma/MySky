@@ -60,8 +60,8 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('MySkyJwt');
-    this.currentUserIdSubject.next(null);
     this.router.navigate(['/auth/login']);
+    this.currentUserIdSubject.next(null);
   }
 
   getToken(): string {

@@ -70,9 +70,18 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models) {
     User.hasMany(models.Jump, {
       foreignKey: 'userId',
+      as: 'jumps',
+    });
+    User.hasMany(models.News, {
+      foreignKey: 'authorId',
     });
     User.belongsTo(models.Role, {
       foreignKey: 'roleId',
+      as: 'role',
+    });
+    User.belongsToMany(models.JumpingDay, {
+      through: 'Schedule',
+      foreignKey: 'userId',
     });
   };
   return User;

@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit {
           'Поздравляем! Вы успешно зарегестрировались!',
           '',
           {
+            panelClass: 'success-signup',
             duration: 5000,
           }
         );

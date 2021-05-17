@@ -22,6 +22,11 @@ const routes: Routes = [
       { path: 'edit', component: ProfileEditComponent },
     ],
   },
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

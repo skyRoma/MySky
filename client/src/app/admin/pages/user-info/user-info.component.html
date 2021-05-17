@@ -1,0 +1,44 @@
+<section class="user-info">
+  <div>
+    Основное:
+  </div>
+  <div class="actions">
+    <mat-form-field appearance="outline">
+      <mat-label>Роль</mat-label>
+      <mat-select [value]="userRoleId">
+        <mat-option
+          *ngFor="let role of userRoles"
+          [value]="role.id"
+          (click)="changeRole(role.id)"
+        >
+          {{ role.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button (click)="removeUser()" mat-icon-button matTooltip="Удалить">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div>
+    <div class="user-info-title">Имя Фамилия</div>
+    <div class="user-info-data">
+      {{ user.firstName + ' ' + user.lastName }}
+    </div>
+  </div>
+  <div>
+    <div class="user-info-title">Почта</div>
+    <div class="user-info-data">{{ user.email }}</div>
+  </div>
+  <div>
+    <div class="user-info-title">Мобильный телефон</div>
+    <div class="user-info-data">{{ user.phoneNumber }}</div>
+  </div>
+  <div>
+    <div class="user-info-title">Прыжков</div>
+    <div class="user-info-data">265</div>
+  </div>
+  <div>
+    <div class="user-info-title">Роль</div>
+    <div class="user-info-data">{{ user.role.name }}</div>
+  </div>
+</section>

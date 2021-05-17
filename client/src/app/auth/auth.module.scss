@@ -71,3 +71,8 @@ form + div {
     cursor: pointer;
   }
 }
+
+::ng-deep .success-signup {
+  background-color: #36743c;
+  color: white;
+}

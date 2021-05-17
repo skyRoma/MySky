@@ -9,4 +9,12 @@ export const EXERCISE_OPTIONS = [
     value: 'Ex2',
     name: ExerciseType.acrobatics,
   },
+  {
+    value: 'Ex3',
+    name: ExerciseType.tandem,
+  },
+  {
+    value: 'Ex4',
+    name: ExerciseType.airForce,
+  },
 ];

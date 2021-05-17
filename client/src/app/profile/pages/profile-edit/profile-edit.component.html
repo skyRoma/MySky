@@ -31,7 +31,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Адрес электронной почты</mat-label>
+      <mat-label>Почта</mat-label>
       <input
         class="user-info-data"
         matInput
@@ -40,6 +40,19 @@
       />
       <mat-error *ngIf="email.invalid">{{
         getErrorMessage(email)
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Мобильный телефон</mat-label>
+      <input
+        class="user-info-data"
+        matInput
+        formControlName="phoneNumber"
+        required
+      />
+      <mat-error *ngIf="phoneNumber.invalid">{{
+        getErrorMessage(phoneNumber)
       }}</mat-error>
     </mat-form-field>
 

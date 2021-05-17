@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Прыжковые дни</mat-card-title>
+    <mat-divider></mat-divider>
+    <div class="schedule-item"></div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let day of jumpingDays">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ day.date | date }}
+          </mat-panel-title>
+          <mat-panel-description>
+            Осталось мест: {{ day.size }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="day-sub-item">
+          <div class="user-info-title">
+            <span>Имя</span>
+            <span>Фамилия</span>
+          </div>
+        </div>
+
+        <div *ngFor="let user of day.users" class="day-sub-item">
+          <div class="user-info">
+            <span>{{ user.firstName }}</span>
+            <span>{{ user.lastName }}</span>
+          </div>
+          <button color="primary" mat-raised-button>Прыгнул</button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+  <button color="primary" mat-raised-button (click)="addDay()">
+    Добавить день
+  </button>
+</mat-card>

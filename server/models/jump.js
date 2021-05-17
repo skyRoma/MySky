@@ -55,6 +55,8 @@ module.exports = (sequelize, DataTypes) => {
         model: 'Users',
         key: 'id',
       },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
       type: DataTypes.UUID,
     },
     createdAt: {
@@ -75,12 +77,15 @@ module.exports = (sequelize, DataTypes) => {
     });
     Jump.belongsTo(models.Aircraft, {
       foreignKey: 'aircraftId',
+      as: 'aircraft',
     });
     Jump.belongsTo(models.Exercise, {
       foreignKey: 'exerciseId',
+      as: 'exercise',
     });
     Jump.belongsTo(models.Parachute, {
       foreignKey: 'parachuteId',
+      as: 'parachute',
     });
   };
   return Jump;

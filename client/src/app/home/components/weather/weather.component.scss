@@ -1,27 +1,5 @@
-.weather-card {
-  margin-top: 130px;
-  width: 50%;
-  max-width: 980px;
-  min-width: 300px;
-
-  .mat-divider-horizontal {
-    bottom: 0px;
-    width: calc(100% + 32px);
-    margin-left: -16px;
-  }
-
+.mat-card {
   .mat-list-item {
-    height: auto;
-    margin-bottom: 15px;
-
-    .mat-list-icon {
-      border-radius: 0;
-      background-image: url('/assets/jump-types-sprite.png');
-      width: 75px;
-      height: 75px;
-      background-repeat: no-repeat;
-    }
- 
     &:first-child {
       .mat-list-icon {
         background-position: -154px -2px;
@@ -47,6 +25,14 @@
       }
     }
 
+    .mat-list-icon {
+      border-radius: 0;
+      background-image: url('/assets/jump-types-sprite.png');
+      width: 75px;
+      height: 75px;
+      background-repeat: no-repeat;
+    }
+
     &.disabled-item {
       color: #cccccc;
 
@@ -55,13 +41,6 @@
       }
     }
   }
-}
-
-.mat-card-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  position: relative;
 }
 
 .mat-card-avatar {

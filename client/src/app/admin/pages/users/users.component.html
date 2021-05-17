@@ -1,0 +1,9 @@
+<section
+  class="main-content full-page-wrapper-level-2"
+  fxLayout="row"
+  fxLayout.lt-md="column"
+>
+  <app-users-list class="half-page users-list" [users]="users" (select)="navigate($event)"></app-users-list>
+  <mat-divider [vertical]="true"></mat-divider>
+  <router-outlet></router-outlet>
+</section>

@@ -7,22 +7,56 @@ const { handleSuccess } = require('../middlewares/responseHandler');
 const router = express.Router();
 
 function findAll() {
-  return userService.findAll();
+  return userService.findAll({
+    attributes: ['id', 'firstName', 'lastName', 'email', 'phoneNumber'],
+    include: [
+      {
+        model: model.Role,
+        as: 'role',
+        attributes: ['id', 'name'],
+      },
+    ],
+    order: [['firstName', 'ASC'], ['lastName', 'ASC']],
+  });
 }
 
 function findById(req) {
   return userService.findById(req.params.id, {
-    attributes: [
-      'firstName',
-      'lastName',
-      'email',
-      'phoneNumber',
-      [model.sequelize.col('Role.name'), 'role'],
-    ],
+    attributes: ['id', 'firstName', 'lastName', 'email', 'phoneNumber'],
     include: [
       {
         model: model.Role,
-        attributes: [],
+        as: 'role',
+        attributes: ['id', 'name'],
+      },
+      {
+        model: model.Jump,
+        as: 'jumps',
+        attributes: [
+          'id',
+          'date',
+          'height',
+          'freeFallTime',
+          'result',
+          'createdAt',
+        ],
+        include: [
+          {
+            model: model.Exercise,
+            as: 'exercise',
+            attributes: ['id', 'name'],
+          },
+          {
+            model: model.Parachute,
+            as: 'parachute',
+            attributes: ['id', 'name'],
+          },
+          {
+            model: model.Aircraft,
+            as: 'aircraft',
+            attributes: ['id', 'name'],
+          },
+        ],
       },
     ],
   });
@@ -33,7 +67,9 @@ function create(req) {
 }
 
 function update(req) {
-  return userService.update(req.params.id, req.body);
+  return userService
+    .update(req.params.id, req.body)
+    .then(() => findById(req));
 }
 
 function remove(req) {
